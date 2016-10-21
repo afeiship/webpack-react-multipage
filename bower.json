@@ -19,5 +19,8 @@
     "test",
     "tests",
     "src"
-  ]
+  ],
+  "dependencies": {
+    "webkit-sass-reset": "afeiship/webkit-sass-reset"
+  }
 }

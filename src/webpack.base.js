@@ -1,21 +1,22 @@
 (function() {
 
-  var config = require('./config.json');
+  var config = require('./webpack_config.json');
+  var nx=require('next-js-core2');
   var path = require('path');
   var webpack = require('webpack');
   var entries = require('webpack-entries');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
-  var webpackEntries = entries('modules/**/*.js');
+  var webpackEntries = entries(config.appEntries);
   var webpackPlugins = [
-    new webpack.ProvidePlugin({}),
+    new webpack.ProvidePlugin({
+    }),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
-    new ExtractTextPlugin('[name][hash:5].css')
+    new ExtractTextPlugin('[name]-[hash:5].css')
   ];
 
-  console.log(webpackEntries);
   module.exports = {
     entry: webpackEntries,
     plugins: webpackPlugins,
@@ -26,7 +27,8 @@
             filename: name + '.html',
             template: name + '.html',
             inject: true,
-            chunks: [config.venderName, name]
+            hash:5,
+            chunks: [config.vendorName, name]
           });
           webpackPlugins.push(plugin);
         }
@@ -43,10 +45,7 @@
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer')
-      }, {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!less')
-      }, {
+      },{
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')
       }, {

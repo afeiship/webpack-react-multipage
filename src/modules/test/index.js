@@ -6,12 +6,12 @@ class IndexApp extends React.Component {
   render() {
     console.log('render');
     return (
-      <div>Hello index view1</div>
+      <div>test view1</div>
     )
   }
 }
 
 ReactDom.render(
     <IndexApp />,
-    document.getElementById('index-app')
+    document.getElementById('test-app')
 );
