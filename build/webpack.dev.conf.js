@@ -6,18 +6,22 @@
   var config = require('./webpack.config.js');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var nx = require('next-js-core2');
-  var hotReloadEntries = {};
   var hotReloadPlugins = [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
     new webpack.HotModuleReplacementPlugin()
   ];
 
-  nx.each($.webpackEntries,function(name,path) {
+  nx.each($.webpackEntries,function(name) {
     if (name.indexOf('index') > -1) {
       var plugin = new HtmlWebpackPlugin({
         filename: name+ '.html',
         template: name + '.html',
-        inject: true,
-        hash: 5,
+        hash: 6,
+        minify:false,
         chunks: [config.vendorName, name]
       });
       $.plugins.push(plugin);

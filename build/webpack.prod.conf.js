@@ -9,6 +9,11 @@
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var nx = require('next-js-core2');
   var productPlugins = [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -17,7 +22,7 @@
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: config.vendorName,
-      chunks:Object.keys($.processedEntries)
+      chunks: Object.keys($.processedEntries)
     })
   ];
 
@@ -27,8 +32,8 @@
       var plugin = new HtmlWebpackPlugin({
         filename: name.slice(12) + '.html',
         template: name + '.html',
-        inject: true,
-        hash: 5,
+        hash: 6,
+        minify: false,
         chunks: [config.vendorName, name.slice(12)]
       });
       $.plugins.push(plugin);
@@ -41,8 +46,8 @@
     entry: $.processedEntries,
     output: {
       path: path.join(__dirname, '..', 'dist'),
-      filename: '[name]-[hash:6].js',
-      chunkFilename: '[id]-[hash:6].js',
+      filename: '[name]-[chunkhash:6].js',
+      chunkFilename: '[id]-[chunkhash:6].js',
       minify: false,
       publicPath: '/'
     },

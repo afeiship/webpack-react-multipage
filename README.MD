@@ -6,3 +6,12 @@
 + http://stackoverflow.com/questions/33820139/module-build-failed-referenceerror-babel
 + http://blog.csdn.net/github_26672553/article/details/52280655
 + http://www.cnblogs.com/-simon/p/5947092.html
+
+## for react warning...
+```js
+new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: JSON.stringify('development')
+  }
+})
+```

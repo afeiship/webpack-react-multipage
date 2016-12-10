@@ -12,7 +12,7 @@
     new webpack.ProvidePlugin({}),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
-    new ExtractTextPlugin('[name]-[hash:5].css')
+    new ExtractTextPlugin('[name]-[chunkhash:6].css')
   ];
 
   var processedEntries={};
@@ -46,10 +46,10 @@
         loader: 'url-loader?limit=8096&name=fonts/[name].[ext]'
       }, {
         test: /\.(html|tpl)$/,
-        loader: 'html-loader'
+        loader: 'html-loader?minimize=false'
       }, {
         test: /\.js|jsx$/,
-        loaders: ['react-hot', 'babel?presets[]=es2015,presets[]=react,presets[]=stage-0'],
+        loaders: ['react-hot'],
         include: path.join(__dirname, 'js')
       }]
     },
