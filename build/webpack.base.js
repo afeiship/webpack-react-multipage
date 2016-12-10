@@ -1,34 +1,42 @@
 (function() {
-
-  var config = require('./webpack_config.json');
-  var nx=require('next-js-core2');
+  var ROOT_PATH = require('root-path');
+  var config = require('./webpack.config');
+  var nx = require('next-js-core2');
   var path = require('path');
   var webpack = require('webpack');
   var entries = require('webpack-entries');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
-  var PurifyCSSPlugin = require('purifycss-webpack-plugin');
-  var webpackEntries = entries(config.appEntries);
+  var webpackEntries = entries('src/modules/**/*.js');
   var webpackPlugins = [
-    new webpack.ProvidePlugin({
-    }),
+    new webpack.ProvidePlugin({}),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
     new ExtractTextPlugin('[name]-[hash:5].css')
   ];
 
+  var processedEntries={};
+
+  for (var key in webpackEntries) {
+    if (webpackEntries.hasOwnProperty(key)) {
+      processedEntries[key.slice(12)]=webpackEntries[key];
+    }
+  }
+
   module.exports = {
-    entry: webpackEntries,
+    webpackEntries: webpackEntries,
+    processedEntries:processedEntries,
     plugins: webpackPlugins,
     initMultiHtmlWebpackPlugins: function() {
       Object.keys(webpackEntries).forEach(function(name) {
+        // console.log(name.slice(12));
         if (name.indexOf('index') > -1) {
           var plugin = new HtmlWebpackPlugin({
-            filename: name + '.html',
+            filename: name.slice(12) + '.html',
             template: name + '.html',
             inject: true,
-            hash:5,
-            chunks: [config.vendorName, name]
+            hash: 5,
+            chunks: [config.vendorName, name.slice(12)]
           });
           webpackPlugins.push(plugin);
         }
@@ -42,7 +50,7 @@
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer')
-      },{
+      }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')
       }, {

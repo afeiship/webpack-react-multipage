@@ -1,5 +1,0 @@
-{
-  "vendorName": "scripts/vendor",
-  "devPort": 8082,
-  "appEntries": "modules/**/*.js"
-}

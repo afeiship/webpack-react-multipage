@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import './style';
 
 class IndexApp extends React.Component {
   render() {
-    console.log('render');
+    console.log('test view render...');
     return (
       <div>test view1</div>
     )
   }
 }
 
-ReactDom.render(
+ReactDOM.render(
     <IndexApp />,
     document.getElementById('test-app')
 );

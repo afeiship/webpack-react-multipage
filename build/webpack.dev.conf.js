@@ -3,21 +3,18 @@
   var path = require('path');
   var webpack = require('webpack');
   var $ = require('./webpack.base');
-  var config = require('./webpack_config.json');
+  var config = require('./webpack.config.js');
   $.initMultiHtmlWebpackPlugins();
 
   var hotReloadEntries = {};
   var hotReloadPlugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    new webpack.HotModuleReplacementPlugin()
   ];
 
   hotReloadPlugins = hotReloadPlugins.concat($.plugins);
 
   module.exports = {
-    entry: $.entry,
+    entry: $.webpackEntries,
     output: {
       path: path.join(__dirname, '..', 'dist'),
       filename: '[name].js',
