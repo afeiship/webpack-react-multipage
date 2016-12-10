@@ -17,13 +17,13 @@
 
   nx.each($.webpackEntries,function(name) {
     if (name.indexOf('index') > -1) {
-      var plugin = new HtmlWebpackPlugin({
-        filename: name+ '.html',
-        template: name + '.html',
-        hash: 6,
-        minify:false,
-        chunks: [config.vendorName, name]
-      });
+      var plugin = new HtmlWebpackPlugin(
+        nx.mix(config.htmlWebpackOptions,{
+          filename: name+ '.html',
+          template: name + '.ejs',
+          chunks: [config.vendorName, name]
+        })
+      );
       $.plugins.push(plugin);
     }
   })
@@ -47,7 +47,8 @@
     resolve: $.resolve,
     devtool: '#source-map',
     devServer: {
-      hot: true
+      hot: true,
+      stats: 'errors-only'
     }
   };
 

@@ -3,7 +3,7 @@
   var webpack = require('webpack');
   var path = require('path');
   var $ = require('./webpack.base');
-  var config = require('./webpack.config.js');
+  var config = require('./webpack.config');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -26,16 +26,17 @@
     })
   ];
 
+
   Object.keys($.webpackEntries).forEach(function(name) {
     // console.log(name.slice(12));
     if (name.indexOf('index') > -1) {
-      var plugin = new HtmlWebpackPlugin({
-        filename: name.slice(12) + '.html',
-        template: name + '.html',
-        hash: 6,
-        minify: false,
-        chunks: [config.vendorName, name.slice(12)]
-      });
+      var plugin = new HtmlWebpackPlugin(
+        nx.mix(config.htmlWebpackOptions,{
+          filename: name.slice(12) + '.html',
+          template: name + '.ejs',
+          chunks: [config.vendorName, name.slice(12)]
+        })
+      );
       $.plugins.push(plugin);
     }
   });

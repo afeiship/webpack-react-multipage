@@ -7,6 +7,11 @@
 + http://blog.csdn.net/github_26672553/article/details/52280655
 + http://www.cnblogs.com/-simon/p/5947092.html
 
+## list files:
+```bash
+du -hs *
+```
+
 ## for react warning...
 ```js
 new webpack.DefinePlugin({
@@ -15,3 +20,6 @@ new webpack.DefinePlugin({
   }
 })
 ```
+
+## todos:
+- [ ] local fonts/images support.

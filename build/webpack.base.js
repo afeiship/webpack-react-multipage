@@ -15,18 +15,22 @@
     new ExtractTextPlugin('[name]-[chunkhash:6].css')
   ];
 
-  var processedEntries={};
+  var processedEntries = {};
 
   for (var key in webpackEntries) {
     if (webpackEntries.hasOwnProperty(key)) {
-      processedEntries[key.slice(12)]=webpackEntries[key];
+      processedEntries[key.slice(12)] = webpackEntries[key];
     }
   }
 
   module.exports = {
     webpackEntries: webpackEntries,
-    processedEntries:processedEntries,
+    processedEntries: processedEntries,
     plugins: webpackPlugins,
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM'
+    },
     module: {
       loaders: [{
         test: /\.js$/,
@@ -51,6 +55,9 @@
         test: /\.js|jsx$/,
         loaders: ['react-hot'],
         include: path.join(__dirname, 'js')
+      }, {
+        test: /\.hbs$/,
+        loader: "handlebars"
       }]
     },
     resolve: {

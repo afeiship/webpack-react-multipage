@@ -184,7 +184,7 @@ atob@~1.1.0:
   version "1.1.3"
   resolved "http://registry.npm.taobao.org/atob/download/atob-1.1.3.tgz#95f13629b12c3a51a5d215abdce2aa9f32f80773"
 
-autoprefixer-core@^5.2.0, autoprefixer-core@^5.2.1:
+autoprefixer-core@^5.2.1:
   version "5.2.1"
   resolved "http://registry.npm.taobao.org/autoprefixer-core/download/autoprefixer-core-5.2.1.tgz#e640c414ae419aae21c1ad43c8ea0f3db82a566d"
   dependencies:
@@ -193,14 +193,25 @@ autoprefixer-core@^5.2.0, autoprefixer-core@^5.2.1:
     num2fraction "^1.1.0"
     postcss "~4.1.12"
 
-autoprefixer-loader@^2.0.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/autoprefixer-loader/download/autoprefixer-loader-2.1.0.tgz#9577285c9be8d22162e259f7543ecde413911c68"
+autoprefixer-loader@^3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/autoprefixer-loader/download/autoprefixer-loader-3.2.0.tgz#39a7b6646a8269865073d958c97f486152c2c84a"
   dependencies:
-    autoprefixer-core "^5.2.0"
-    loader-utils "^0.2.5"
-    postcss "^5.0.3"
+    autoprefixer "^6.0.2"
+    loader-utils "^0.2.11"
+    postcss "^5.0.4"
     postcss-safe-parser "^1.0.1"
+
+autoprefixer@^6.0.2:
+  version "6.5.3"
+  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-6.5.3.tgz#2d853af66d04449fcf50db3066279ab54c3e4b01"
+  dependencies:
+    browserslist "~1.4.0"
+    caniuse-db "^1.0.30000578"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^5.2.5"
+    postcss-value-parser "^3.2.3"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -1044,6 +1055,12 @@ browserslist@~0.4.0:
   dependencies:
     caniuse-db "^1.0.30000153"
 
+browserslist@~1.4.0:
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/browserslist/download/browserslist-1.4.0.tgz#9cfdcf5384d9158f5b70da2aa00b30e8ff019049"
+  dependencies:
+    caniuse-db "^1.0.30000539"
+
 buffer-crc32@~0.2.3:
   version "0.2.13"
   resolved "http://registry.npm.taobao.org/buffer-crc32/download/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
@@ -1106,7 +1123,7 @@ camelcase@^1.0.2, camelcase@^1.2.1:
   version "1.2.1"
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
 
-camelcase@^2.0.0, camelcase@^2.0.1:
+camelcase@^2.0.0:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
 
@@ -1114,7 +1131,7 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
-caniuse-db@^1.0.30000153, caniuse-db@^1.0.30000214:
+caniuse-db@^1.0.30000153, caniuse-db@^1.0.30000214, caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000578:
   version "1.0.30000596"
   resolved "http://registry.npm.taobao.org/caniuse-db/download/caniuse-db-1.0.30000596.tgz#ff7690aecf87d6e79a3ca6ae18580de52fdd031e"
 
@@ -1227,7 +1244,7 @@ cliui@^2.1.0:
     right-align "^0.1.1"
     wordwrap "0.0.2"
 
-cliui@^3.0.3, cliui@^3.2.0:
+cliui@^3.2.0:
   version "3.2.0"
   resolved "http://registry.npm.taobao.org/cliui/download/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"
   dependencies:
@@ -3664,6 +3681,10 @@ normalize-path@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/normalize-path/download/normalize-path-2.0.1.tgz#47886ac1662760d4261b7d979d241709d3ce3f7a"
 
+normalize-range@^0.1.2:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/normalize-range/download/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+
 normalize-selector@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/normalize-selector/download/normalize-selector-0.2.0.tgz#d0b145eb691189c63a78d201dc4fdb1293ef0c03"
@@ -3707,7 +3728,7 @@ nth-check@~1.0.1:
   dependencies:
     boolbase "~1.0.0"
 
-num2fraction@^1.1.0:
+num2fraction@^1.1.0, num2fraction@^1.2.2:
   version "1.2.2"
   resolved "http://registry.npm.taobao.org/num2fraction/download/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 
@@ -4135,6 +4156,10 @@ postcss-value-parser@^1.1.0, postcss-value-parser@^1.4.2:
   version "1.4.2"
   resolved "http://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-1.4.2.tgz#1865633e13701f8a721e7834dad185cb144aad0c"
 
+postcss-value-parser@^3.2.3:
+  version "3.3.0"
+  resolved "http://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
+
 postcss-zindex@^1.1.3:
   version "1.1.3"
   resolved "http://registry.npm.taobao.org/postcss-zindex/download/postcss-zindex-1.1.3.tgz#49564ab49d3dda17067f8dac1c8335d7f2d00ce1"
@@ -4149,7 +4174,7 @@ postcss@^4.1.0, postcss@^4.1.10, postcss@^4.1.11, postcss@^4.1.13, postcss@^4.1.
     js-base64 "~2.1.8"
     source-map "~0.4.2"
 
-postcss@^5.0.18, postcss@^5.0.3:
+postcss@^5.0.18, postcss@^5.0.4, postcss@^5.2.5:
   version "5.2.6"
   resolved "http://registry.npm.taobao.org/postcss/download/postcss-5.2.6.tgz#a252cd67cd52585035f17e9ad12b35137a7bdd9e"
   dependencies:
@@ -5523,10 +5548,6 @@ window-size@0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/window-size/download/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
 
-window-size@^0.1.4:
-  version "0.1.4"
-  resolved "http://registry.npm.taobao.org/window-size/download/window-size-0.1.4.tgz#f8e1aa1ee5a53ec5bf151ffa09742a6ad7697876"
-
 window-size@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/window-size/download/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
@@ -5568,7 +5589,7 @@ xml-char-classes@^1.0.0:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/xtend/download/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
-y18n@^3.2.0, y18n@^3.2.1:
+y18n@^3.2.1:
   version "3.2.1"
   resolved "http://registry.npm.taobao.org/y18n/download/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
 
@@ -5583,17 +5604,14 @@ yargs-parser@^2.4.1:
     camelcase "^3.0.0"
     lodash.assign "^4.0.6"
 
-yargs@^3.10.0:
-  version "3.32.0"
-  resolved "http://registry.npm.taobao.org/yargs/download/yargs-3.32.0.tgz#03088e9ebf9e756b69751611d2a5ef591482c995"
+yargs@^3.10.0, yargs@~3.10.0:
+  version "3.10.0"
+  resolved "http://registry.npm.taobao.org/yargs/download/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
   dependencies:
-    camelcase "^2.0.1"
-    cliui "^3.0.3"
-    decamelize "^1.1.1"
-    os-locale "^1.4.0"
-    string-width "^1.0.1"
-    window-size "^0.1.4"
-    y18n "^3.2.0"
+    camelcase "^1.0.2"
+    cliui "^2.1.0"
+    decamelize "^1.0.0"
+    window-size "0.1.0"
 
 yargs@^4.7.1:
   version "4.8.1"
@@ -5617,15 +5635,6 @@ yargs@^4.7.1:
 yargs@~1.3.3:
   version "1.3.3"
   resolved "http://registry.npm.taobao.org/yargs/download/yargs-1.3.3.tgz#054de8b61f22eefdb7207059eaef9d6b83fb931a"
-
-yargs@~3.10.0:
-  version "3.10.0"
-  resolved "http://registry.npm.taobao.org/yargs/download/yargs-3.10.0.tgz#f7ee7bd857dd7c1d2d38c0e74efbd681d1431fd1"
-  dependencies:
-    camelcase "^1.0.2"
-    cliui "^2.1.0"
-    decamelize "^1.0.0"
-    window-size "0.1.0"
 
 yargs@~3.5.4:
   version "3.5.4"
