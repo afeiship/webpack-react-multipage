@@ -6,8 +6,8 @@
   var config = require('./webpack.config.js');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
-  var entries = require('webpack-entries');
-  var webpackEntries = entries(config.appEntries);
+  var HtmlWebpackPlugin = require('html-webpack-plugin');
+  var nx = require('next-js-core2');
   var productPlugins = [
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -21,7 +21,19 @@
     })
   ];
 
-  $.initMultiHtmlWebpackPlugins();
+  Object.keys($.webpackEntries).forEach(function(name) {
+    // console.log(name.slice(12));
+    if (name.indexOf('index') > -1) {
+      var plugin = new HtmlWebpackPlugin({
+        filename: name.slice(12) + '.html',
+        template: name + '.html',
+        inject: true,
+        hash: 5,
+        chunks: [config.vendorName, name.slice(12)]
+      });
+      $.plugins.push(plugin);
+    }
+  });
 
   productPlugins = $.plugins.concat(productPlugins);
 

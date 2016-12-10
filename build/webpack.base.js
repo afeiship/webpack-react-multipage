@@ -27,21 +27,6 @@
     webpackEntries: webpackEntries,
     processedEntries:processedEntries,
     plugins: webpackPlugins,
-    initMultiHtmlWebpackPlugins: function() {
-      Object.keys(webpackEntries).forEach(function(name) {
-        // console.log(name.slice(12));
-        if (name.indexOf('index') > -1) {
-          var plugin = new HtmlWebpackPlugin({
-            filename: name.slice(12) + '.html',
-            template: name + '.html',
-            inject: true,
-            hash: 5,
-            chunks: [config.vendorName, name.slice(12)]
-          });
-          webpackPlugins.push(plugin);
-        }
-      });
-    },
     module: {
       loaders: [{
         test: /\.js$/,
@@ -71,8 +56,7 @@
     resolve: {
       extensions: ['', '.js', '.scss'],
       alias: {
-        components: path.join(__dirname, 'components'),
-        images: path.join(__dirname, 'assets/images')
+        bower_components: path.join(__dirname, '../bower_components')
       }
     }
   };
