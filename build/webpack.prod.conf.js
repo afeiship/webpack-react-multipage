@@ -1,17 +1,17 @@
 (function() {
 
-  var webpack = require('webpack');
-  var path = require('path');
-  var $ = require('./webpack.base');
-  var webpackMerge = require('webpack-merge')
-  var config = require('./webpack.config');
-  var ExtractTextPlugin = require('extract-text-webpack-plugin');
-  var HtmlWebpackPlugin = require('html-webpack-plugin');
-  var nx = require('next-js-core2');
-  var baseEntries = $.baseEntries;
-  var productEntries = {};
-  var productPlugins = [];
-
+  let webpack = require('webpack');
+  let path = require('path');
+  let $ = require('./webpack.base');
+  let webpackMerge = require('webpack-merge');
+  let config = require('./webpack.config');
+  let ExtractTextPlugin = require('extract-text-webpack-plugin');
+  let HtmlWebpackPlugin = require('html-webpack-plugin');
+  let nx = require('next-js-core2');
+  let bundleConfig = require('../dist/vendors/bundle-config.json');
+  let baseEntries = $.baseEntries;
+  let productEntries = {};
+  let productPlugins = [];
 
   nx.each(baseEntries,function(key){
     productEntries[key.slice(12)] = baseEntries[key];
@@ -38,9 +38,9 @@
 
   Object.keys(baseEntries).forEach(function(name) {
     if (name.indexOf('index') > -1) {
-      console.log(name);
-      var plugin = new HtmlWebpackPlugin(
+      let plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions,{
+          bundleName: '/vendors/' + bundleConfig.bundle.js,
           filename: name.slice(12) + '.html',
           template: name + '.ejs',
           chunks: [config.vendorName, name.slice(12)]

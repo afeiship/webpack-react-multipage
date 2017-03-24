@@ -1,23 +1,28 @@
 const webpack = require('webpack');
-const vendors = [
-    'react',
-    'react-dom',
-    'next-js-core2'
-];
+const assetsWebpackPlugin = require('assets-webpack-plugin');
+
 module.exports = {
   output: {
     path: './dist/vendors',
-    filename: '[name].js',
-    library: '[name]'//_library_[hash]
+    filename: '[name].[hash].js',
+    library: '[name]_library'
   },
   entry: {
-    vendors: vendors,
+    bundle: [
+      'react',
+      'react-dom',
+      'next-js-core2'
+    ]
   },
   plugins: [
     new webpack.DllPlugin({
-        path: './dist/vendors/manifest.json',
-        name: '[name]',
-        context: __dirname,
+      path: './dist/vendors/manifest.json',
+      name: '[name]_library',
+      context: __dirname,
+    }),
+    new assetsWebpackPlugin({
+      filename: 'bundle-config.json',
+      path: './dist/vendors'
     }),
   ]
 };

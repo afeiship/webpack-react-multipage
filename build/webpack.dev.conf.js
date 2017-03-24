@@ -1,14 +1,15 @@
-(function() {
+(function () {
 
-  var path = require('path');
-  var webpack = require('webpack');
-  var $ = require('./webpack.base');
-  var webpackMerge = require('webpack-merge')
-  var config = require('./webpack.config.js');
-  var HtmlWebpackPlugin = require('html-webpack-plugin');
-  var devEnties = $.baseEntries;
-  var nx = require('next-js-core2');
-  var devPlugins = [
+  let path = require('path');
+  let webpack = require('webpack');
+  let $ = require('./webpack.base');
+  let webpackMerge = require('webpack-merge');
+  let config = require('./webpack.config.js');
+  let HtmlWebpackPlugin = require('html-webpack-plugin');
+  let devEnties = $.baseEntries;
+  let nx = require('next-js-core2');
+  let bundleConfig = require('../dist/vendors/bundle-config.json');
+  let devPlugins = [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
@@ -17,11 +18,13 @@
     new webpack.HotModuleReplacementPlugin(),
   ];
 
-  nx.each(devEnties,function(name) {
+
+  nx.each(devEnties, function (name) {
     if (name.indexOf('index') > -1) {
-      var plugin = new HtmlWebpackPlugin(
-        nx.mix(config.htmlWebpackOptions,{
-          filename: name+ '.html',
+      let plugin = new HtmlWebpackPlugin(
+        nx.mix(config.htmlWebpackOptions, {
+          bundleName: '/dist/vendors/' + bundleConfig.bundle.js,
+          filename: name + '.html',
           template: name + '.ejs',
           chunks: [config.vendorName, name]
         })
@@ -30,8 +33,8 @@
     }
   });
 
-  module.exports =webpackMerge($,{
-    entry:devEnties,
+  module.exports = webpackMerge($, {
+    entry: devEnties,
     output: config.output,
     plugins: devPlugins,
     devtool: '#source-map',

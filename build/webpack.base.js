@@ -1,13 +1,14 @@
 (function() {
-  var ROOT_PATH = require('root-path');
-  var config = require('./webpack.config');
-  var nx = require('next-js-core2');
-  var path = require('path');
-  var webpack = require('webpack');
-  var entries = require('webpack-entries');
-  var ExtractTextPlugin = require('extract-text-webpack-plugin');
-  var baseEntries = entries('src/modules/**/*.js');
-  var webpackPlugins = [
+  let ROOT_PATH = require('root-path');
+
+  let config = require('./webpack.config');
+  let nx = require('next-js-core2');
+  let path = require('path');
+  let webpack = require('webpack');
+  let entries = require('webpack-entries');
+  let ExtractTextPlugin = require('extract-text-webpack-plugin');
+  let baseEntries = entries('src/modules/**/*.js');
+  let webpackPlugins = [
     new webpack.ProvidePlugin({}),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
