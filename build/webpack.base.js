@@ -6,31 +6,25 @@
   var webpack = require('webpack');
   var entries = require('webpack-entries');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
-  var HtmlWebpackPlugin = require('html-webpack-plugin');
-  var webpackEntries = entries('src/modules/**/*.js');
+  var baseEntries = entries('src/modules/**/*.js');
   var webpackPlugins = [
     new webpack.ProvidePlugin({}),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
-    new ExtractTextPlugin('[name]-[chunkhash:6].css')
+    new ExtractTextPlugin('[name]-[chunkhash:6].css'),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../dist/vendors/manifest.json'),
+    })
   ];
 
-  var processedEntries = {};
-
-  for (var key in webpackEntries) {
-    if (webpackEntries.hasOwnProperty(key)) {
-      processedEntries[key.slice(12)] = webpackEntries[key];
-    }
-  }
-
   module.exports = {
-    webpackEntries: webpackEntries,
-    processedEntries: processedEntries,
+    baseEntries: baseEntries,
     plugins: webpackPlugins,
-    externals: {
-      'react': 'React',
-      'react-dom': 'ReactDOM'
-    },
+    // externals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM'
+    // },
     module: {
       loaders: [{
         test: /\.js$/,
@@ -63,7 +57,12 @@
     resolve: {
       extensions: ['', '.js', '.scss'],
       alias: {
-        bower_components: path.join(__dirname, '../bower_components')
+        node_modules: path.join(__dirname, '../node_modules'),
+        bower_components: path.join(__dirname, '../bower_components'),
+        components: path.join(__dirname, '../src/components'),
+        modules: path.join(__dirname, '../src/modules'),
+        images: path.join(__dirname, '../src/assets/images'),
+        vendor: path.join(__dirname, '../src/vendor'),
       }
     }
   };

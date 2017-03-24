@@ -1,11 +1,14 @@
 import 'bower_components/webkit-sass-reset/dist/webkit-sass-reset.scss';
 import './style';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import nx from 'next-js-core2';
 
 class IndexApp extends React.Component {
   render() {
-    console.log('index app render...');
+    console.log('index app 1render...');
     return (
-      <div>Hello index view1</div>
+      <div>Hello index view1!!!</div>
     )
   }
 }

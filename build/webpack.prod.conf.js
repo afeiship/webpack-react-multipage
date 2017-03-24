@@ -3,12 +3,21 @@
   var webpack = require('webpack');
   var path = require('path');
   var $ = require('./webpack.base');
+  var webpackMerge = require('webpack-merge')
   var config = require('./webpack.config');
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
-  var PurifyCSSPlugin = require('purifycss-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var nx = require('next-js-core2');
-  var productPlugins = [
+  var baseEntries = $.baseEntries;
+  var productEntries = {};
+  var productPlugins = [];
+
+
+  nx.each(baseEntries,function(key){
+    productEntries[key.slice(12)] = baseEntries[key];
+  });
+
+  productPlugins = [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -22,14 +31,14 @@
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: config.vendorName,
-      chunks: Object.keys($.processedEntries)
+      chunks: Object.keys(productEntries)
     })
   ];
 
 
-  Object.keys($.webpackEntries).forEach(function(name) {
-    // console.log(name.slice(12));
+  Object.keys(baseEntries).forEach(function(name) {
     if (name.indexOf('index') > -1) {
+      console.log(name);
       var plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions,{
           filename: name.slice(12) + '.html',
@@ -37,27 +46,15 @@
           chunks: [config.vendorName, name.slice(12)]
         })
       );
-      $.plugins.push(plugin);
+      productPlugins.push(plugin);
     }
   });
 
-  productPlugins = $.plugins.concat(productPlugins);
-
-  module.exports = {
-    entry: $.processedEntries,
-    output: {
-      path: path.join(__dirname, '..', 'dist'),
-      filename: '[name]-[chunkhash:6].js',
-      chunkFilename: '[id]-[chunkhash:6].js',
-      minify: false,
-      publicPath: '/'
-    },
-    plugins: productPlugins,
-    module: $.module,
-    vue: $.vue,
-    babel: $.babel,
-    resolve: $.resolve
-  };
+  module.exports =webpackMerge($, {
+    entry: productEntries,
+    output: config.output,
+    plugins: productPlugins
+  });
 
 
 }());

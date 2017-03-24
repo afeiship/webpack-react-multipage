@@ -2,18 +2,20 @@
   "name": "webpack-react-multipage",
   "version": "0.0.0",
   "description": "React multipage app based on webpack.",
-  "homepage": "https://github.com/afeiship/webpack-react-spa",
+  "homepage": "https://github.com/afeiship/webpack-react-multipage",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && webpack --config ./build/webpack.prod.conf.js",
-    "dev": "npm run clean && webpack-dev-server --inline --colors --port 8090 --config ./build/webpack.dev.conf.js"
+    "dll": "npm run clean && webpack --config ./build/webpack.dll.conf.js",
+    "build": "npm run dll && webpack --config ./build/webpack.prod.conf.js",
+    "dev": "npm run dll && webpack-dev-server --inline --colors --config ./build/webpack.dev.conf.js"
   },
   "license": "MIT",
   "dependencies": {
+    "next-js-core2": "github:afeiship/next-js-core2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
@@ -52,6 +54,7 @@
     "webpack-entries": "afeiship/webpack-entries",
     "webpack-hot-middleware": "^2.12.2",
     "webpack-init": "^0.1.1",
+    "webpack-merge": "^4.1.0",
     "yargs": "^4.7.1"
   }
 }
