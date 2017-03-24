@@ -24,3 +24,8 @@ new webpack.DefinePlugin({
 ## todos:
 - [x] cdn for react/react-dom
 - [ ] local fonts/images support.
+
+
+## resource:
++ http://blog.csdn.net/fengyinchao/article/details/52100357
++ http://blog.csdn.net/fengyinchao/article/details/52100357

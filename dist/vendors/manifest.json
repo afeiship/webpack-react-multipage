@@ -1,5 +1,5 @@
 {
-  "name": "bundle_library",
+  "name": "vendors_library",
   "content": {
     "../node_modules/react/react.js": 1,
     "../node_modules/react/lib/React.js": 2,

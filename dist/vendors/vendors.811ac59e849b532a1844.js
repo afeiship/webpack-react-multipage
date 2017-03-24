@@ -1,4 +1,4 @@
-var bundle_library =
+var vendors_library =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

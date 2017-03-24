@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const assetsWebpackPlugin = require('assets-webpack-plugin');
+const AssetsWebpackPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   output: {
@@ -8,7 +8,7 @@ module.exports = {
     library: '[name]_library'
   },
   entry: {
-    bundle: [
+    vendors: [
       'react',
       'react-dom',
       'next-js-core2'
@@ -20,7 +20,7 @@ module.exports = {
       name: '[name]_library',
       context: __dirname,
     }),
-    new assetsWebpackPlugin({
+    new AssetsWebpackPlugin({
       filename: 'bundle-config.json',
       path: './dist/vendors'
     }),

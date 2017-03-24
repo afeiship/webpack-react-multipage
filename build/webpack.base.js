@@ -1,6 +1,4 @@
 (function() {
-  let ROOT_PATH = require('root-path');
-
   let config = require('./webpack.config');
   let nx = require('next-js-core2');
   let path = require('path');

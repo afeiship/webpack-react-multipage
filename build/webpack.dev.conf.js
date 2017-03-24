@@ -8,7 +8,6 @@
   let HtmlWebpackPlugin = require('html-webpack-plugin');
   let devEnties = $.baseEntries;
   let nx = require('next-js-core2');
-  let bundleConfig = require('../dist/vendors/bundle-config.json');
   let devPlugins = [
     new webpack.DefinePlugin({
       'process.env': {
@@ -23,7 +22,6 @@
     if (name.indexOf('index') > -1) {
       let plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions, {
-          bundleName: '/dist/vendors/' + bundleConfig.bundle.js,
           filename: name + '.html',
           template: name + '.ejs',
           chunks: [config.vendorName, name]

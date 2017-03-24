@@ -8,7 +8,6 @@
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
   let HtmlWebpackPlugin = require('html-webpack-plugin');
   let nx = require('next-js-core2');
-  let bundleConfig = require('../dist/vendors/bundle-config.json');
   let baseEntries = $.baseEntries;
   let productEntries = {};
   let productPlugins = [];
@@ -40,7 +39,6 @@
     if (name.indexOf('index') > -1) {
       let plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions,{
-          bundleName: '/vendors/' + bundleConfig.bundle.js,
           filename: name.slice(12) + '.html',
           template: name + '.ejs',
           chunks: [config.vendorName, name.slice(12)]
