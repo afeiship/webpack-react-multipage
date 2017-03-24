@@ -24,5 +24,11 @@ module.exports = {
       filename: 'bundle-config.json',
       path: './dist/vendors'
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      mangle: false
+    }),
   ]
 };

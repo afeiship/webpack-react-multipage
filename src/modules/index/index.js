@@ -6,7 +6,7 @@ import nx from 'next-js-core2';
 
 class IndexApp extends React.Component {
   render() {
-    console.log('index app 1render...');
+    console.log('index app 1render...',nx.hashlize());
     return (
       <div>Hello index view1!!!</div>
     )

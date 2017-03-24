@@ -27,5 +27,8 @@ new webpack.DefinePlugin({
 
 
 ## resource:
+### dll package:
 + http://blog.csdn.net/fengyinchao/article/details/52100357
-+ http://blog.csdn.net/fengyinchao/article/details/52100357
++ https://robertknight.github.io/posts/webpack-dll-plugins/
++ https://medium.com/@soederpop/webpack-plugins-been-we-been-keepin-on-the-dll-cdfdd6cb8cd7#.byfy3mdfi
++ https://juejin.im/entry/57a6dee4a633bd00604d0e73
