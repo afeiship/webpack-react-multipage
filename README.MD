@@ -24,7 +24,7 @@ new webpack.DefinePlugin({
 ## todos:
 - [x] cdn for react/react-dom
 - [ ] local fonts/images support.
-
+- [ ] dev-dll/prod-dll files.
 
 ## resource:
 ### dll package:
