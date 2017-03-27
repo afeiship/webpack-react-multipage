@@ -1,4 +1,4 @@
-(function() {
+(function () {
   let config = require('./webpack.config');
   let nx = require('next-js-core2');
   let path = require('path');
@@ -7,7 +7,11 @@
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
   let baseEntries = entries('src/modules/**/*.js');
   let webpackPlugins = [
-    new webpack.ProvidePlugin({}),
+    new webpack.ProvidePlugin({
+      nx: 'next-js-core2',
+      React: 'react',
+      ReactDOM: 'react-dom'
+    }),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
     new ExtractTextPlugin('[name]-[chunkhash:6].css'),
@@ -24,6 +28,9 @@
     //   'react': 'React',
     //   'react-dom': 'ReactDOM'
     // },
+    node: {
+      fs: "empty"
+    },
     module: {
       loaders: [{
         test: /\.js$/,

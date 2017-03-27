@@ -31,6 +31,7 @@ export default class extends AppBase {
 
   @autobind
   _onClick() {
+    console.log(this);
     let {test} = this.$local(['test']);
     test++;
     this.$actions.local({test: test})

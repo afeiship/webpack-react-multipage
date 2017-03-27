@@ -9,8 +9,9 @@ module.exports = {
   vendorName: 'vendors/common',
   htmlWebpackOptions: {
     hash: 6,
-    data:{
-      vendors:vendors
+    data: {
+      cdn_ionicons: 'http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.css',
+      vendors: vendors
     }
   },
   devServer: {

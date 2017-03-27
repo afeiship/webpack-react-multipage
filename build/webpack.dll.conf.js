@@ -5,12 +5,14 @@ const env = argv.config.indexOf('prod.conf') > -1 ? 'prod' : 'dev';
 
 // common vendors(can be minifed by uglify lodaer:)
 let vendors = [
+  'resolution',
+  'fastclick',
   'next-js-core2',
   'next-wxsdk',
   'next-react-redux'
 ];
 
-// common plugins:
+
 let plugins = [
   new webpack.DllPlugin({
     path: './dist/vendors/manifest.json',
