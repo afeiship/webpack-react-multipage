@@ -3,7 +3,14 @@ const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const argv = require('yargs').argv;
 const env = argv.config.indexOf('prod.conf') > -1 ? 'prod' : 'dev';
 
+// common vendors(can be minifed by uglify lodaer:)
+let vendors = [
+  'next-js-core2',
+  'next-wxsdk',
+  'next-react-redux'
+];
 
+// common plugins:
 let plugins = [
   new webpack.DllPlugin({
     path: './dist/vendors/manifest.json',
@@ -25,6 +32,15 @@ if (env === 'prod') {
       mangle: false
     })
   );
+  vendors = vendors.concat([
+    'react.min',
+    'react-dom.min',
+  ]);
+} else {
+  vendors = vendors.concat([
+    'react',
+    'react-dom',
+  ]);
 }
 
 
@@ -35,11 +51,7 @@ module.exports = {
     library: '[name]_library'
   },
   entry: {
-    vendors: [
-      'react',
-      'react-dom',
-      'next-js-core2'
-    ]
+    vendors: vendors
   },
   plugins: plugins
 };
