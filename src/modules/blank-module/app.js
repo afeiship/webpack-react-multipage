@@ -1,5 +1,5 @@
 import React from 'react';
-
+import autobind from 'autobind-decorator';
 import {ReduxAppBase} from 'next-react-redux';
 
 export default class extends ReduxAppBase {
@@ -31,7 +31,9 @@ export default class extends ReduxAppBase {
     }
   }
 
+  @autobind
   _onClick() {
+    console.log(this);
     const {actions} = ReduxAppBase;
     let {test} = ReduxAppBase.local(['test']);
     test++;
@@ -44,7 +46,7 @@ export default class extends ReduxAppBase {
       <div className="blank-module-view">
         member-list.1212...{test}
 
-        <button className="dc-button" onClick={this._onClick.bind(this)}>TEST</button>
+        <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );
   }

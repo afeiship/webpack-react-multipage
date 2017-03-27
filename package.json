@@ -1,8 +1,8 @@
 {
-  "name": "webpack-react-multipage",
+  "name": "dacang-weipai",
   "version": "0.0.0",
-  "description": "React multipage app based on webpack.",
-  "homepage": "https://github.com/afeiship/webpack-react-multipage",
+  "description": "Dacang weipai",
+  "homepage": "git@git.oschina.net:afeiship/dacang-weipai.git",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "autobind-decorator": "^1.3.4",
     "fastclick": "^1.0.6",
     "next-axios": "github:afeiship/next-axios",
     "next-js-core2": "github:afeiship/next-js-core2",
@@ -32,6 +33,7 @@
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.0.0",
