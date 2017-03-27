@@ -3,8 +3,8 @@ import nxAxios from 'next-axios';
 
 const WeiPaiHttp = nx.declare({
   extend: nxAxios,
-  instance: null,
   statics: {
+    instance: null,
     getInstance: function () {
       if (!WeiPaiHttp.instance) {
         WeiPaiHttp.instance = new WeiPaiHttp();
@@ -27,7 +27,7 @@ const WeiPaiHttp = nx.declare({
   }
 });
 
-export default  http = WeiPaiHttp.getInstance();
+export default WeiPaiHttp.getInstance();
 
 
 

@@ -1,3 +1,3 @@
-export  default {
-  AppBase: require('./app-base')
-}
+module.exports = {
+  AppBase: require('./app-base').default
+};

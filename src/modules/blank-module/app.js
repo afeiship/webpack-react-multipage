@@ -1,12 +1,10 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import {ReduxAppBase} from 'next-react-redux';
+import {AppBase} from 'components/scripts/index';
 
-export default class extends ReduxAppBase {
-  componentDidMount() {
-    console.log(ReduxAppBase.memory());
-  }
 
+export default class extends AppBase {
   static initialState() {
     return {
       memory: {
@@ -33,11 +31,9 @@ export default class extends ReduxAppBase {
 
   @autobind
   _onClick() {
-    console.log(this);
-    const {actions} = ReduxAppBase;
-    let {test} = ReduxAppBase.local(['test']);
+    let {test} = this.$local(['test']);
     test++;
-    actions.local({test: test})
+    this.$actions.local({test: test})
   }
 
   render() {

@@ -1,6 +1,8 @@
-import {post} from './http';
+import http from './http';
+
 
 let Api = {};
+
 
 const api_without_token = {
   baseUrl: '/interface/helper/pmall/',
@@ -21,17 +23,18 @@ const api_with_token = {
 };
 
 
-api_without_token.forEach((item) => {
+api_without_token.items.forEach((item) => {
   Api[item] = function () {
-    return post(`${api_without_token.baseUrl}${item}`)
+    return http.post(`${api_without_token.baseUrl}${item}`)
   };
 });
 
 
-api_with_token.forEach((item) => {
+api_with_token.items.forEach((item) => {
   Api[item] = () => {
-    return post(`${api_with_token.baseUrl}${item}`)
+    return http.post(`${api_with_token.baseUrl}${item}`)
   };
 });
+
 
 export default Api;
