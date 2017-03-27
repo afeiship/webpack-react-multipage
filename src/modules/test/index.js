@@ -1,4 +1,4 @@
-import 'bower_components/webkit-sass-reset/dist/webkit-sass-reset.scss';
+import 'components/styles/index.scss';
 import './style';
 import React from 'react';
 import ReactDOM from 'react-dom';
