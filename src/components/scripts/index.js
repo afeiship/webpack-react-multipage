@@ -1,6 +1,2 @@
-// module.exports = {
-//   AppBase: require('./app-base').default
-// };
-
-export default require(exports.default).default;
+export default require('./app-base').default;
 // export const OtherModule = require('other-module').default;
