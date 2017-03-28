@@ -1,7 +1,7 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import {ReduxAppBase} from 'next-react-redux';
-import {AppBase} from 'components/scripts/index';
+import AppBase from 'components/scripts/index';
 
 
 export default class extends AppBase {
@@ -31,14 +31,13 @@ export default class extends AppBase {
 
   @autobind
   _onClick() {
-    console.log(this);
-    let {test} = this.$local(['test']);
+    let {test} = AppBase.$.local;
     test++;
-    this.$actions.local({test: test})
+    AppBase.$.local={test:test};
   }
 
   render() {
-    const {test} = ReduxAppBase.local(['test']);
+    const {test} = AppBase.$.local;
     return (
       <div className="blank-module-view">
         member-list.1212...{test}
