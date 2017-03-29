@@ -6,11 +6,14 @@
   let entries = require('webpack-entries');
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
   let baseEntries = entries('src/modules/**/*.js');
+  // let glopImporter = require('node-sass-glob-importer');
+
   let webpackPlugins = [
     new webpack.ProvidePlugin({
       nx: 'next-js-core2',
       React: 'react',
-      ReactDOM: 'react-dom'
+      ReactDOM: 'react-dom',
+      autobind: 'autobind-decorator'
     }),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
@@ -32,6 +35,10 @@
       fs: "empty"
     },
     module: {
+      preloaders: [{
+        test: /\.scss/,
+        loader: 'import-glob-loader'
+      }],
       loaders: [{
         test: /\.js$/,
         loader: 'babel',
@@ -41,7 +48,7 @@
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer')
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass')
+        loader: ExtractTextPlugin.extract('style', 'css!autoprefixer!sass!import-glob-loader')
       }, {
         test: /\.(gif|jpg|png)\??.*$/,
         loader: 'url-loader?limit=8096&name=images/[name].[ext]'
