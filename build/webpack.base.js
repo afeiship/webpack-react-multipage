@@ -5,7 +5,7 @@
   let webpack = require('webpack');
   let entries = require('webpack-entries');
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
-  let baseEntries = entries('src/modules/**/*.js');
+  let baseEntries = entries('src/modules/**/index.js');
   // let glopImporter = require('node-sass-glob-importer');
 
   let webpackPlugins = [
