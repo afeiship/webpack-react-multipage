@@ -7,6 +7,8 @@ const vendors = `${dllPath}/vendors/${bundleConfig.vendors.js}`;
 
 module.exports = {
   vendorName: 'vendors/common',
+  spa:true,
+  baseEntryPath:'src/modules/**/index.js',
   htmlWebpackOptions: {
     hash: 6,
     data: {
