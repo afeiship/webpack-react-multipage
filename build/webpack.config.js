@@ -2,6 +2,7 @@ const path = require('path');
 const argv = require('yargs').argv;
 const env = argv.config.indexOf('prod.conf') > -1 ? 'prod' : 'dev';
 const dllPath = env === 'dev' ? '/dist' : '';
+const publicPath = env === 'dev' ? '/' : '../';
 const bundleConfig = require('../dist/vendors/bundle-config.json');
 const vendors = `${dllPath}/vendors/${bundleConfig.vendors.js}`;
 
@@ -34,6 +35,6 @@ module.exports = {
     filename: '[name]-[hash:6].js',
     chunkFilename: '[id]-[hash:6].js',
     minify: false,
-    publicPath: '/'
+    publicPath
   }
 };
