@@ -5,6 +5,7 @@
     "stage-0"
   ],
   "plugins": [
+    "transform-array-from",
     "transform-class-properties",
     "transform-es2015-spread",
     "transform-object-rest-spread",
