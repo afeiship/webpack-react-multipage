@@ -1,8 +1,8 @@
-import React from 'react';
-import autobind from 'autobind-decorator';
-import {ReduxAppBase} from 'next-react-redux';
-import AppBase from 'components/scripts/index';
+import AppBase,{TestComp} from 'components/scripts/index';
 
+import React from 'react';
+import {ReduxAppBase} from 'next-react-redux';
+import autobind from 'autobind-decorator';
 
 export default class extends AppBase {
   static initialState() {
@@ -41,7 +41,7 @@ export default class extends AppBase {
     return (
       <div className="blank-module-view">
         member-list.1212...{test}
-
+        <TestComp></TestComp>
         <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );

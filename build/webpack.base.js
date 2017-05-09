@@ -13,6 +13,7 @@
       nx: 'next-js-core2',
       React: 'react',
       ReactDOM: 'react-dom',
+      mixin:'mixin-decorator',
       autobind: 'autobind-decorator'
     }),
     new webpack.NoErrorsPlugin(),
