@@ -19,6 +19,12 @@ let plugins = [
     name: '[name]_library',
     context: __dirname,
   }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    },
+    mangle: false
+  }),
   new AssetsWebpackPlugin({
     filename: 'bundle-config.json',
     path: './dist/vendors'
