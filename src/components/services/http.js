@@ -2,7 +2,7 @@ import nx from 'next-js-core2';
 import nxAxios from 'next-axios';
 
 const WeiPaiHttp = nx.declare({
-  extend: nxAxios,
+  extends: nxAxios,
   statics: {
     instance: null,
     getInstance: function () {

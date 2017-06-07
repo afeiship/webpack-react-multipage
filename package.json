@@ -17,8 +17,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --config ./build/webpack.dev.conf.js"
   },
   "license": "MIT",
-  "config":{
-    "dll-vendors":[
+  "config": {
+    "dll-vendors": [
       "resolution",
       "fastclick",
       "next-js-core2",
@@ -34,11 +34,13 @@
     "next-axios": "github:afeiship/next-axios",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-react-redux": "github:afeiship/next-react-redux",
+    "next-scroll-minder": "github:afeiship/next-scroll-minder",
     "next-store": "github:afeiship/next-store",
     "next-wxsdk": "github:afeiship/next-wxsdk",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
+    "react-scroller": "github:afeiship/react-scroller",
     "resolution": "github:afeiship/resolution"
   },
   "devDependencies": {

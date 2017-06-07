@@ -12,6 +12,7 @@
       nx: 'next-js-core2',
       React: 'react',
       ReactDOM: 'react-dom',
+      Q: 'q',
       mixin:'mixin-decorator',
       autobind: 'autobind-decorator'
     }),

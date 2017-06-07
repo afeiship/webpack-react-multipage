@@ -1,11 +1,9 @@
-import {Router, Route, IndexRedirect, hashHistory} from 'react-router';
+import {IndexRedirect, Route, Router, hashHistory} from 'react-router';
+
 import AppBase from 'components/scripts/index';
-
-
 import Container from './container';
 import Main from './main';
 import Product from './product';
-
 
 const routes = (
   <Route path="/" component={Container}>
@@ -32,13 +30,16 @@ export default class extends AppBase {
         test: 200,
         store: 0,
         items: [
-          {key: 1}
+          {
+            key: 1
+          }
         ]
-      },
-      session: {
-        afei: 'session test..'
       }
     }
+  }
+
+  componentDidMount(){
+    console.log('did mout!');
   }
 
   render() {
