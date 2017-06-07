@@ -6,7 +6,6 @@
   let entries = require('webpack-entries');
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
   let baseEntries = entries(config.baseEntryPath);
-  // let glopImporter = require('node-sass-glob-importer');
 
   let webpackPlugins = [
     new webpack.ProvidePlugin({
@@ -28,10 +27,6 @@
   module.exports = {
     baseEntries: baseEntries,
     plugins: webpackPlugins,
-    // externals: {
-    //   'react': 'React',
-    //   'react-dom': 'ReactDOM'
-    // },
     node: {
       fs: "empty"
     },

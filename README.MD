@@ -1,4 +1,4 @@
-#webpack-react-multipage
+# webpack-react-multipage
 > React multipage app based on webpack.
 
 ## resouces:
@@ -14,6 +14,7 @@ du -hs *
 
 ## for react warning...
 ```js
+//Some development js package need this one.
 new webpack.DefinePlugin({
   'process.env': {
     NODE_ENV: JSON.stringify('development')
@@ -25,6 +26,9 @@ new webpack.DefinePlugin({
 - [x] cdn for react/react-dom
 - [ ] local fonts/images support.
 - [ ] dev-dll/prod-dll files.
+- [ ] css image sprite
+- [ ] ejs -> jade/pug with jade mixin/extend and etc.
+- [ ] move config to Package.json->config key.
 
 ## resource:
 ### dll package:

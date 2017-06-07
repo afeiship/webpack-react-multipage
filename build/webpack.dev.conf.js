@@ -9,13 +9,9 @@
   let devEnties = $.baseEntries;
   let nx = require('next-js-core2');
   let devPlugins = [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
-    }),
     new webpack.HotModuleReplacementPlugin(),
   ];
+
 
 
   nx.each(devEnties, function (name) {
