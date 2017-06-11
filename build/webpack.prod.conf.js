@@ -7,11 +7,13 @@
   let config = require('./webpack.config');
   let ExtractTextPlugin = require('extract-text-webpack-plugin');
   let HtmlWebpackPlugin = require('html-webpack-plugin');
+  let HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
   let nx = require('next-js-core2');
   let baseEntries = $.baseEntries;
   let productEntries = {};
   let productPlugins = [];
   let sliceLength = config.spa ? 4 : 12;
+  
 
   nx.each(baseEntries,function(key){
     productEntries[key.slice(sliceLength)] = baseEntries[key];
@@ -35,13 +37,15 @@
       let plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions,{
           filename: name.slice(sliceLength) + '.html',
-          template: name + '.ejs',
+          template: name + '.jade',
+          minify: false,
           chunks: [config.vendorName, name.slice(sliceLength)]
         })
       );
       productPlugins.push(plugin);
     }
   });
+  productPlugins.push( new HtmlWebpackPugPlugin() );
 
   module.exports =webpackMerge($, {
     entry: productEntries,

@@ -10,9 +10,9 @@
   let webpackPlugins = [
     new webpack.ProvidePlugin({
       nx: 'next-js-core2',
+      Q: 'q',
       React: 'react',
       ReactDOM: 'react-dom',
-      Q: 'q',
       mixin:'mixin-decorator',
       autobind: 'autobind-decorator'
     }),
@@ -28,6 +28,10 @@
   module.exports = {
     baseEntries: baseEntries,
     plugins: webpackPlugins,
+    // externals: {
+    //   'react': 'React',
+    //   'react-dom': 'ReactDOM'
+    // },
     node: {
       fs: "empty"
     },
@@ -60,8 +64,8 @@
         loaders: ['react-hot'],
         include: path.join(__dirname, 'js')
       }, {
-        test: /\.hbs$/,
-        loader: "handlebars"
+        test: /\.jade$/,
+        loader: 'jade-loader?pretty=true'
       }]
     },
     resolve: {

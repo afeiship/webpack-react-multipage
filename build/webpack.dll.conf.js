@@ -29,7 +29,7 @@
   ];
 
   //for dev/prd env:
-  vendors = vendors.concat( NxDllPackage.get('react') );
+  // vendors = vendors.concat( NxDllPackage.get('react') );
   env === 'development' && plugins.splice(1,1);
 
   module.exports = {
