@@ -28,10 +28,10 @@
   module.exports = {
     baseEntries: baseEntries,
     plugins: webpackPlugins,
-    // externals: {
-    //   'react': 'React',
-    //   'react-dom': 'ReactDOM'
-    // },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM'
+    },
     node: {
       fs: "empty"
     },
