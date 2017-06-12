@@ -8,6 +8,8 @@ html(lang="en")
 
   body.index-mod-body
     #app
+    script(src="https://cdn.bootcss.com/react/15.5.4/react.min.js")
+    script(src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js")
     script(src="//dn-staticfile.qbox.me/basket.js/0.5.2/basket.full.min.js")
     script.
       var scriptFiles = "#{htmlWebpackPlugin.options.data.vendors},#{htmlWebpackPlugin.files.js}".split(',');

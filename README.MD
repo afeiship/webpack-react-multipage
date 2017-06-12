@@ -18,7 +18,7 @@ new webpack.DefinePlugin({
 - [ ] css image sprite
 - [x] ejs -> jade/pug with jade mixin/extend and etc.
 - [ ] move config to Package.json->config key.
-
+- [ ] React/ReactDOM to global
 
 ## resource:
 + http://blog.csdn.net/fengyinchao/article/details/52100357

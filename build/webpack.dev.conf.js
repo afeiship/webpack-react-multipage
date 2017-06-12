@@ -19,7 +19,7 @@
       let plugin = new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions, {
           filename: name + '.html',
-          template: name + '.ejs',
+          template: name + '.jade',
           chunks: [config.vendorName, name]
         })
       );

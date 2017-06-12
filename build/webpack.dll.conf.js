@@ -7,7 +7,7 @@
   const nx = require('next-js-core2');
   const NxDllPackage = require('next-dll-package');
   const package = require('../package');
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+  // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   let vendors = package.config['dll-vendors'];
 
 
@@ -19,10 +19,18 @@
       context: __dirname,
     }),
     new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
       compress: {
-        warnings: false
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
       },
-      mangle: false
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
     new AssetsWebpackPlugin({
       filename: 'bundle-config.json',
@@ -32,7 +40,7 @@
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.IgnorePlugin(/React/),
     new webpack.IgnorePlugin(/ReactDOM/),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ];
 
   //for dev/prd env:
