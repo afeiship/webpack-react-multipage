@@ -1,15 +1,15 @@
 (function() {
 
-  let webpack = require('webpack');
-  let path = require('path');
-  let $ = require('./webpack.base');
-  let webpackMerge = require('webpack-merge');
-  let config = require('./webpack.config');
-  let ExtractTextPlugin = require('extract-text-webpack-plugin');
-  let HtmlWebpackPlugin = require('html-webpack-plugin');
-  let HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-  let nx = require('next-js-core2');
-  let baseEntries = $.baseEntries;
+  const webpack = require('webpack');
+  const path = require('path');
+  const $ = require('./webpack.base');
+  const webpackMerge = require('webpack-merge');
+  const config = require('./webpack.config');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+  const nx = require('next-js-core2');
+  const baseEntries = $.baseEntries;
   let productEntries = {};
   let productPlugins = [];
   let sliceLength = config.spa ? 4 : 12;

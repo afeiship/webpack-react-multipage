@@ -1,13 +1,13 @@
 (function () {
-  let config = require('./webpack.config');
-  let nx = require('next-js-core2');
-  let path = require('path');
-  let webpack = require('webpack');
-  let entries = require('webpack-entries');
-  let ExtractTextPlugin = require('extract-text-webpack-plugin');
-  let baseEntries = entries(config.baseEntryPath);
+  const config = require('./webpack.config');
+  const nx = require('next-js-core2');
+  const path = require('path');
+  const webpack = require('webpack');
+  const entries = require('webpack-entries');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
+  const baseEntries = entries(config.baseEntryPath);
 
-  let webpackPlugins = [
+  const webpackPlugins = [
     new webpack.ProvidePlugin({
       nx: 'next-js-core2',
       Q: 'q',
