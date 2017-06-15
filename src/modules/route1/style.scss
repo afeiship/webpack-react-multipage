@@ -57,3 +57,16 @@
     border-radius: 10px;
   }
 }
+
+.container{
+  position: relative;
+  z-index: 1000;
+
+  nav{
+    height:50px;
+    line-height: 50px;
+    li{
+      float: left;
+    }
+  }
+}

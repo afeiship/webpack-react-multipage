@@ -1,15 +1,18 @@
-import {IndexRedirect, Route, Router, hashHistory} from 'react-router';
+import {IndexRedirect, Route, Router, createMemoryHistory} from 'react-router';
 
 import AppBase from 'components/scripts/index';
 import Container from './container';
+import Detail from './detail';
 import Main from './main';
 import Product from './product';
 
+const history = createMemoryHistory(location);
 const routes = (
   <Route path="/" component={Container}>
     <IndexRedirect to="/main"/>
     <Route path="/main" component={Main}/>
     <Route path="/product" component={Product}/>
+    <Route path="/detail" component={Detail}/>
   </Route>
 );
 
@@ -38,13 +41,20 @@ export default class extends AppBase {
     }
   }
 
+  componentWillMount(){
+    window.onpopstate=function(){
+      alert(3);
+      console.log('popstate..');
+    };
+  }
+
   componentDidMount(){
-    console.log('did mout!');
+    window.history.pushState({},document.title,'?abc')
   }
 
   render() {
     return (
-      <Router history={hashHistory}>
+      <Router history={history}>
         {routes}
       </Router>
     )

@@ -6,11 +6,11 @@ import ReactScroller from 'react-scroller';
 export default class extends React.PureComponent {
 
   componentDidMount() {
-    NxScrollMinder.attach(this.refs.scroller);
+    // NxScrollMinder.attach(this.refs.scroller);
     window.demo = this;
 
     setTimeout(()=>{
-      NxScrollMinder.scrollToRestored();
+      // NxScrollMinder.scrollToRestored();
     },100);
   }
 
@@ -29,8 +29,7 @@ export default class extends React.PureComponent {
   render() {
     return (
       <div className="my-main-view">
-        <header className="header">Header</header>
-        <ReactScroller ref='scroller' className="body">
+        <div className="body">
           <p>Main view.</p>
           <figure>
             <img src="http://www.dcpai.cn/update/1492419763l568132719.jpg" alt=""/>
@@ -49,7 +48,7 @@ export default class extends React.PureComponent {
           </figure>
 
           <button onClick={this._onClick}> To Produt..</button>
-        </ReactScroller>
+        </div>
         <footer className="footer">
           footer
           <a href="#product">TO Product</a>

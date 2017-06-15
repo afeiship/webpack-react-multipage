@@ -29,19 +29,25 @@ export default class extends AppBase {
     }
   }
 
-  @autobind
-  _onClick() {
+  _onClick = e => {
     let {test} = AppBase.$.local;
     test++;
     AppBase.$.local={test:test};
   }
+
+  _onClick2 = e => {
+    //location.replace('./index');
+    // history.back();
+    window.history.go(-2);
+  };
+
 
   render() {
     const {test} = AppBase.$.local;
     return (
       <div className="blank-module-view">
         member-list.1212...{test}
-        <TestComp></TestComp>
+        <button onClick={this._onClick2}>GoTo Index...</button>
         <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );

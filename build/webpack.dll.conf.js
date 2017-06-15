@@ -38,8 +38,8 @@
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.IgnorePlugin(/React/),
-    new webpack.IgnorePlugin(/ReactDOM/),
+    // new webpack.IgnorePlugin(/React/),
+    // new webpack.IgnorePlugin(/ReactDOM/),
     // new BundleAnalyzerPlugin()
   ];
 

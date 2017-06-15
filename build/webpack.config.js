@@ -13,6 +13,8 @@ module.exports = {
   // baseEntryPath:'src/modules/**/index.js',
   baseEntryPath:[
     'src/modules/index/index.js',
+    'src/modules/blank-module/index.js',
+    'src/modules/route1/index.js',
     // 'src/modules/router2/index.js',
   ],
   htmlWebpackOptions: {
