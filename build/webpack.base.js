@@ -7,6 +7,11 @@
   const ExtractTextPlugin = require('extract-text-webpack-plugin');
   const baseEntries = entries(config.baseEntryPath);
 
+  //webpack-dashboard
+  const Dashboard = require('webpack-dashboard');
+  const DashboardPlugin = require('webpack-dashboard/plugin');
+  const dashboard = new Dashboard();
+
   const webpackPlugins = [
     new webpack.ProvidePlugin({
       nx: 'next-js-core2',
@@ -22,7 +27,8 @@
     new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require('../dist/vendors/manifest.json'),
-    })
+    }),
+    new DashboardPlugin(dashboard.setData)
   ];
 
   module.exports = {

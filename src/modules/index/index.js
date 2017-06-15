@@ -14,7 +14,7 @@ class IndexApp extends React.Component {
   };
 
   render() {
-    console.log('index app 1render...',nx.hashlize());
+    console.log('index app render...',nx.hashlize());
     return (
       <div>Hello index view1!!!YOUHAHA!
         <h1><button onClick={this._onClick}>Go to route1</button></h1>
