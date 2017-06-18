@@ -8,9 +8,9 @@
   const baseEntries = entries(config.baseEntryPath);
 
   //webpack-dashboard
-  const Dashboard = require('webpack-dashboard');
-  const DashboardPlugin = require('webpack-dashboard/plugin');
-  const dashboard = new Dashboard();
+  // const Dashboard = require('webpack-dashboard');
+  // const DashboardPlugin = require('webpack-dashboard/plugin');
+  // const dashboard = new Dashboard();
 
   const webpackPlugins = [
     new webpack.ProvidePlugin({
@@ -28,7 +28,7 @@
       context: __dirname,
       manifest: require('../dist/vendors/manifest.json'),
     }),
-    new DashboardPlugin(dashboard.setData)
+    // new DashboardPlugin(dashboard.setData)
   ];
 
   module.exports = {

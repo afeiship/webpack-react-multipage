@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    title testTitle
+    meta(name="viewport", content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0")
+    each item in htmlWebpackPlugin.files.css
+      link(href="#{item}",rel="stylesheet")
+
+  body.index-mod-body
+    #app
+    script(src="https://cdn.bootcss.com/react/15.5.4/react.min.js")
+    script(src="https://cdn.bootcss.com/react/15.5.4/react-dom.min.js")
+    script(src="//dn-staticfile.qbox.me/basket.js/0.5.2/basket.full.min.js")
+    script.
+      var scriptFiles = "#{htmlWebpackPlugin.options.data.vendors},#{htmlWebpackPlugin.files.js}".split(',');
+      var requestScripts = [];
+      requestScripts = scriptFiles.map(function(item,index){
+        return { url: item };
+      });
+
+      basket.require.apply(basket,requestScripts).then(function() {
+        console.log('loaded...');
+      });
