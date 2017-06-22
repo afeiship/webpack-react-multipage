@@ -1,7 +1,7 @@
 import React from 'react';
 import {ReduxAppBase} from 'next-react-redux';
 
-export default class AppBase extends ReduxAppBase {
+export default class extends ReduxAppBase {
   constructor(props) {
     super(props);
 
@@ -11,6 +11,6 @@ export default class AppBase extends ReduxAppBase {
     });
 
     //fastclick:
-    // FastClick.attach(document.body);
+    FastClick.attach(document.body);
   }
 }
