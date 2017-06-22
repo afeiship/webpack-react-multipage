@@ -79,10 +79,10 @@ class IndexApp extends React.Component {
       rowCount={rows.length}
       >
         <AutoSizer>
-          {({ height, isScrolling, onChildScroll, scrollTop }) => (
-            <List
+          {({ width,height }) => (
+            <Collection
               height={height}
-              width={375}
+              width={width}
               cellCount={rows.length}
               cellSizeAndPositionGetter={this.cellSizeAndPositionGetter.bind(this)}
               cellRenderer={this.cellRenderer.bind(this)} />
