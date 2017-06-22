@@ -10,13 +10,13 @@ const vendors = `${CDN_ASSETS_URL}${dllPath}/vendors/${bundleConfig.vendors.js}`
 module.exports = {
   vendorName: 'vendors/common',
   spa:false,
-  baseEntryPath:'src/modules/**/index.js',
-  // baseEntryPath:[
-  //   'src/modules/index/index.js',
-  //   'src/modules/blank-module/index.js',
-  //   'src/modules/route1/index.js',
-  //   'src/modules/router2/index.js',
-  // ],
+  // baseEntryPath:'src/modules/**/index.js',
+  baseEntryPath:[
+    'src/modules/virtualed-list/index.js',
+    // 'src/modules/blank-module/index.js',
+    // 'src/modules/route1/index.js',
+    // 'src/modules/router2/index.js',
+  ],
   htmlWebpackOptions: {
     hash: 6,
     inject:false,

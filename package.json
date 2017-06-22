@@ -46,6 +46,7 @@
     "react-router-dom": "^4.1.1",
     "react-scroller": "github:afeiship/react-scroller",
     "react-swiper": "github:afeiship/react-swiper",
+    "react-virtualized": "^9.8.0",
     "resolution": "github:afeiship/resolution"
   },
   "devDependencies": {
