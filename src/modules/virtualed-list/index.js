@@ -2,7 +2,7 @@ import 'components/styles/index.scss';
 import './style';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 
-import {AutoSizer, Collection, InfiniteLoader} from 'react-virtualized'
+import {AutoSizer, Collection, InfiniteLoader, WindowScroller} from 'react-virtualized'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -73,16 +73,16 @@ class IndexApp extends React.Component {
   render() {
     const {rows} = this.state;
     return (
-      <AutoSizer>
-        {({ height, width }) => (
+      <WindowScroller>
+        {({ height, isScrolling, onChildScroll, scrollTop }) => (
           <Collection
             height={height}
-            width={width}
+            width={375}
             cellCount={rows.length}
             cellSizeAndPositionGetter={this.cellSizeAndPositionGetter.bind(this)}
             cellRenderer={this.cellRenderer.bind(this)} />
         )}
-      </AutoSizer>
+      </WindowScroller>
     )
   }
 }
