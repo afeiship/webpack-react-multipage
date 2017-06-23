@@ -2,10 +2,12 @@
   const config = require('./webpack.config');
   const nx = require('next-js-core2');
   const path = require('path');
+  const fs = require('fs');
   const webpack = require('webpack');
   const entries = require('webpack-entries');
   const ExtractTextPlugin = require('extract-text-webpack-plugin');
   const baseEntries = entries(config.baseEntryPath);
+  const StatisticInjectorPlugin = require('statistic-injector-webpack-plugin').default;
 
   //webpack-dashboard
   // const Dashboard = require('webpack-dashboard');
@@ -13,6 +15,9 @@
   // const dashboard = new Dashboard();
 
   const webpackPlugins = [
+    new StatisticInjectorPlugin({
+      path: path.join(__dirname,'../src/components/other/umeng-statistic.html')
+    }),
     new webpack.ProvidePlugin({
       nx: 'next-js-core2',
       Q: 'q',
@@ -27,7 +32,7 @@
     new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require('../dist/vendors/manifest.json'),
-    }),
+    })
     // new DashboardPlugin(dashboard.setData)
   ];
 

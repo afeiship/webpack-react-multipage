@@ -27,14 +27,18 @@ module.exports = {
     }
   },
   devServer: {
-    port: 8899,
+    port: 80,
     hot: true,
+    host: 'train-h5.dcpai.cn',
     stats: 'errors-only',
     proxy: {
-      '/helper': {
-        //target: 'http://train.dcpai.cn:80',
-        target: 'http://192.168.10.253:80',
-        pathRewrite: {'^/helper': '/helper'},
+      '/weipai': {
+        target: 'http://139.196.57.60:8082',
+        changeOrigin: true
+      },
+      '/shanggu': {
+        target: 'http://train-h5.dcpai.cn:80',
+        pathRewrite: {'^/shanggu': '/src/modules'},
         changeOrigin: true
       }
     }

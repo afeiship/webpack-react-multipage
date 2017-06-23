@@ -20,40 +20,6 @@ class IndexApp extends React.Component {
     });
   }
 
-
-  generateData(inStart,inEnd){
-    let data = [];
-    let start = inStart || 1;
-    let end = inEnd || 20;
-    for(let i = start; i<=end; i++){
-      data.push({
-        id: i,
-        data: Math.random()
-      });
-    }
-    return data;
-  }
-
-
-  cellRenderer(inItem){
-    return (
-      <div
-      key={inItem.key}
-      style={inItem.style}>
-        {inItem.key}
-      </div>
-    )
-  }
-
-  cellSizeAndPositionGetter({index}){
-    return {
-      height:40,
-      width:375,
-      x: 20,
-      y: 40  * index
-    };
-  }
-
   isRowLoaded({ index }){
     return !!this.state.rows[index];
   }
@@ -74,7 +40,7 @@ class IndexApp extends React.Component {
   _renderItem(inItem){
     const {index,style} = inItem;
     return (
-      <div key={index} style={style}>
+      <div key={index} className={`v-item-${index}`} style={style}>
         <figure>
             <img src="http://placeholder.qiniudn.com/375x200" alt=""/>
             <figurecaption>Letter: {inItem[index]}, Row: #{index}</figurecaption>
@@ -115,6 +81,13 @@ class IndexApp extends React.Component {
     this.checkBounds();
   }
 
+  _itemSize(index){
+    console.log(index);
+    const itemDom = document.querySelector(`.v-item-${index}`);
+    console.log(itemDom);
+    return 200;
+  }
+
   render() {
     const {rows,loading} = this.state;
     return (
@@ -125,7 +98,7 @@ class IndexApp extends React.Component {
           height='100%'
           onScroll={this._onScroll.bind(this)}
           itemCount={rows.length}
-          itemSize={220} // Also supports variable heights (array or function getter)
+          itemSize={this._itemSize} // Also supports variable heights (array or function getter)
           renderItem={this._renderItem.bind(this)}
         />
         {loading && <div className="load-more">loading...</div>}

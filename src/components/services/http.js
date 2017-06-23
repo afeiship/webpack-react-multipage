@@ -18,7 +18,7 @@ const WeiPaiHttp = nx.declare({
       this.$base.init();
       this.setHeaders({
         common: {
-          'Client-ABC': 'H5-fei'
+          'Power by': 'Fei de next framework'
         }
       })
     },
