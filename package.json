@@ -89,7 +89,7 @@
     "rimraf": "^2.5.3",
     "root-path": "afeiship/root-path",
     "sass-loader": "^4.0.0",
-    "statistic-injector-webpack-plugin": "github:afeiship/statistic-injector-webpack-plugin",
+    "scripts-injector-webpack-plugin": "github:afeiship/scripts-injector-webpack-plugin",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",
