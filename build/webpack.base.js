@@ -66,7 +66,7 @@
             },
             {
               from:'__BUILD_ENV__',
-              to:argv._[0] || 'test'
+              to:argv.env || 'test'
             }
           ]
         }
