@@ -13,7 +13,7 @@ module.exports = {
   // baseEntryPath:'src/modules/**/index.js',
   baseEntryPath:[
     'src/modules/tiny-virtual-list/index.js',
-    // 'src/modules/virtualed-collection/index.js',
+    'src/modules/virtualed-collection/index.js',
     // 'src/modules/blank-module/index.js',
     // 'src/modules/route1/index.js',
     // 'src/modules/router2/index.js',

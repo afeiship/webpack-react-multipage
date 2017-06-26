@@ -10,6 +10,7 @@
   const gitInfo = require('git-info');
   const baseEntries = entries(config.baseEntryPath);
   const devVersionRE = /([\d.]+)/g;
+  const argv = require('yargs').argv;
 
   //webpack-dashboard
   // const Dashboard = require('webpack-dashboard');
@@ -60,11 +61,12 @@
           replace: [
             {
               from: '__BUILD_VERSION__',
-              to: gitInfo.currentBranch().match(devVersionRE)[0],
+              to: '1.0.0'
+              // to: gitInfo.currentBranch().match(devVersionRE)[0],
             },
             {
               from:'__BUILD_ENV__',
-              to:argv.env || 'test'
+              to:argv._[0] || 'test'
             }
           ]
         }
