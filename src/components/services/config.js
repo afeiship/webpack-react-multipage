@@ -8,13 +8,13 @@ const CONFIG = require(`../configs/${env}`).default;
 // console.log(`load config env=${env}...`, CONFIG);
 
 export default class {
+  static VESION = '__BUILD_VERSION__';
+  static ENV = env;
   static WX_DEBUG = CONFIG.WX_DEBUG;
   static IMG_URL = CONFIG.IMG_URL;
-  static VESION = '__BUILD_VERSION__';
-
 
   static API_WITH_TOKEN = {
-    baseUrl: '/weipai/i/wp/pmall/',
+    baseUrl: '/api/wp/pmall/',
     items: [
       'test1',
       'loginByPublic_100'
@@ -22,7 +22,7 @@ export default class {
   };
 
   static API_WITHOUT_TOKEN = {
-    baseUrl: '/weipai/i/wp/',
+    baseUrl: '/api/wp/',
     items: [
       'setMyPhone_100'
     ]
