@@ -6,8 +6,10 @@
   const webpack = require('webpack');
   const entries = require('webpack-entries');
   const ExtractTextPlugin = require('extract-text-webpack-plugin');
-  const baseEntries = entries(config.baseEntryPath);
   const ScriptsInjectorPlugin = require('scripts-injector-webpack-plugin').default;
+  const gitInfo = require('git-info');
+  const baseEntries = entries(config.baseEntryPath);
+
 
   //webpack-dashboard
   // const Dashboard = require('webpack-dashboard');

@@ -22,6 +22,7 @@ module.exports = {
     hash: 6,
     inject:false,
     data: {
+      VERSION:'1.0.0',
       cdn_ionicons: 'http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.css',
       vendors: vendors
     }
