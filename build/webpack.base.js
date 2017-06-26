@@ -9,7 +9,7 @@
   const ScriptsInjectorPlugin = require('scripts-injector-webpack-plugin').default;
   const gitInfo = require('git-info');
   const baseEntries = entries(config.baseEntryPath);
-
+  const devVersionRE = /([\d.]+)/g;
 
   //webpack-dashboard
   // const Dashboard = require('webpack-dashboard');
@@ -54,6 +54,21 @@
         loader: 'import-glob-loader'
       }],
       loaders: [{
+        test:/\^config.js$/,
+        loader: 'webpack-replace',
+        query: {
+          replace: [
+            {
+              from: '__BUILD_VERSION__',
+              to: gitInfo.currentBranch().match(devVersionRE)[0],
+            },
+            {
+              from:'__BUILD_ENV__',
+              to:argv.env || 'test'
+            }
+          ]
+        }
+      },{
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/
