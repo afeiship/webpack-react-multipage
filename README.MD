@@ -1,14 +1,11 @@
 # webpack-react-multipage
 > React multipage app based on webpack.
 
-## for react warning...
-```js
-//Some development js package need this one.
-new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: JSON.stringify('development')
-  }
-})
+## build prd/test/pre version:
+```bash
+npm run build -- --env=prd
+npm run build -- --env=test
+npm run build -- --env=pre
 ```
 
 ## todos:

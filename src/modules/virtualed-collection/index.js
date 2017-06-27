@@ -7,20 +7,24 @@ import {AutoSizer, Collection, InfiniteLoader, WindowScroller} from 'react-virtu
 import React from 'react';
 import ReactDOM from 'react-dom';
 import nx from 'next-js-core2';
+import {$config} from 'components/scripts/index';
+
+
+console.log($config);
 
 class IndexApp extends React.Component {
-  
+
   state = {
     rows: []
   };
 
-  
+
   componentWillMount() {
     this.setState({
       rows: this.generateData(1,100)
     });
   }
-  
+
 
   generateData(inStart,inEnd){
     let data = [];
@@ -59,7 +63,7 @@ class IndexApp extends React.Component {
   isRowLoaded({ index }){
     return !!this.state.rows[index];
   }
-  
+
   loadMoreRows({startIndex, stopIndex}){
     return setTimeout(()=>{
       const {rows} = this.state;

@@ -55,7 +55,7 @@
         loader: 'import-glob-loader'
       }],
       loaders: [{
-        test:/\^config.js$/,
+        test:/config\.js$/,
         loader: 'webpack-replace',
         query: {
           replace: [

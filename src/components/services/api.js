@@ -1,11 +1,9 @@
 import Config from './config';
 import Http from './http';
-import Mock   from  './mock';
 import Q from 'q';
 
 export default nx.declare({
   statics: {
-    $mock: new Mock(),// add by clark
     all(apis){
       return Q.all(apis);
     },

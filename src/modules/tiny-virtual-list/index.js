@@ -6,6 +6,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import VirtualList from 'react-tiny-virtual-list';
 import nx from 'next-js-core2';
+import {$config} from 'components/scripts/index';
+
+console.log($config);
 
 class IndexApp extends React.Component {
 

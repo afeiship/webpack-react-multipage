@@ -2,7 +2,7 @@
  * Created by feizheng on 3/27/17.
  */
 
-const env = '__BUILD_ENV';
+const env = '__BUILD_ENV__';
 const CONFIG = require(`../configs/${env}`).default;
 
 // console.log(`load config env=${env}...`, CONFIG);
