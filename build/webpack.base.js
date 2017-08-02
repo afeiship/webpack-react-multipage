@@ -65,7 +65,6 @@
             {
               from: '__BUILD_VERSION__',
               to: argVersion
-              // to: gitInfo.currentBranch().match(devVersionRE)[0],
             },
             {
               from:'__BUILD_ENV__',

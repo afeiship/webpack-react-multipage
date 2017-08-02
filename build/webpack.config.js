@@ -30,7 +30,7 @@
       }
     },
     devServer: {
-      port: 80,
+      port: 8812,
       hot: true,
       host: 'train-h5.dcpai.cn',
       stats: 'errors-only',
