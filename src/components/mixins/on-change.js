@@ -7,6 +7,12 @@ export default class {
     };
   }
 
+  onChangeToSession(inField, inEvent) {
+    AppBase.$.session = {
+      [inField]: inEvent.target.value
+    };
+  }
+
   onChangeToMemory(inField, inEvent) {
     AppBase.$.memory = {
       [inField]: inEvent.target.value
