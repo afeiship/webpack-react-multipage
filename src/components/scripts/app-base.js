@@ -5,12 +5,12 @@ export default class extends ReduxAppBase {
   constructor(props) {
     super(props);
 
-    nx.mix(AppBase, {
+    nx.mix(this, {
       $: props.$,
       $hash: nx.hashlize()
     });
 
     //fastclick:
-    FastClick.attach(document.body);
+    // FastClick.attach(document.body);
   }
 }

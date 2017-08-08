@@ -41,6 +41,7 @@
     "next-store": "github:afeiship/next-store",
     "next-wxsdk": "github:afeiship/next-wxsdk",
     "react": "^15.3.2",
+    "react-addons-create-fragment": "^15.6.0",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-router-dom": "^4.1.1",
