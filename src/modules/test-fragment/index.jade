@@ -9,6 +9,7 @@ html(lang="en")
   body.test-fragment-body
     #app
     script(src="#{htmlWebpackPlugin.options.data.vendors}")
-    script(src="#{htmlWebpackPlugin.files.js}")
+    each item in htmlWebpackPlugin.files.js
+      script(src="#{item}")
 
 

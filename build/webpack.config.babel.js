@@ -3,11 +3,14 @@ import {argv} from 'yargs';
 import pkg from '../package.json';
 
 const CDN_ASSETS_URL = '';
-const env = argv.config.indexOf('prod.conf') > -1 ? 'prod' : 'dev';
-const dllPath = env === 'dev' ? '/dist' : '..';
-const publicPath = env === 'dev' ? '/' : '../';
+const env = process.env.NODE_ENV;
+const dllPath = env === 'development' ? '/dist' : '..';
+const publicPath = env === 'development' ? '/' : '../';
 const bundleConfig = require('../dist/vendors/bundle-config.json');
 const vendors = `${CDN_ASSETS_URL}${dllPath}/vendors/${bundleConfig.vendors.js}`;
+
+
+console.log(env, process.env.NODE_ENV);
 
 export default {
   vendorName: 'vendors/common',

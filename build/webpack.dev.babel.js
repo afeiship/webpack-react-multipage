@@ -3,9 +3,9 @@ import $ from './webpack.base.babel';
 import webpackMerge from 'webpack-merge';
 import config from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import nx from 'next-js-core2';
 
 const devEnties = $.baseEntries;
-const nx = require('next-js-core2');
 let devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
 ];

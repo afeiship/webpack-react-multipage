@@ -5,7 +5,7 @@ import config from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 import nx from 'next-js-core2';
-
+import pkg from '../package.json';
 
 const baseEntries = $.baseEntries;
 let productEntries = {};
@@ -18,12 +18,7 @@ nx.each(baseEntries, function (key) {
 });
 
 productPlugins = [
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    },
-    mangle: false
-  }),
+  new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
   new webpack.optimize.CommonsChunkPlugin({
     name: config.vendorName,
     chunks: Object.keys(productEntries)
