@@ -97,6 +97,7 @@
     "mixin-decorator": "github:afeiship/mixin-decorator",
     "moment": "^2.18.1",
     "next-axios": "github:afeiship/next-axios",
+    "next-hashlize": "github:afeiship/next-hashlize",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-react-redux": "github:afeiship/next-react-redux",
     "next-scroll-minder": "github:afeiship/next-scroll-minder",

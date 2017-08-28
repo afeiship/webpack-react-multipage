@@ -16,9 +16,7 @@ const argVersion = (argEnv === 'test') ? gitDevVersion + gitInfo.shortHash() : g
 
 
 const plugins = [
-  new ScriptsInjectorPlugin({
-    path: path.join(__dirname, '../src/components/others/umeng-statistic.html')
-  }),
+  new ScriptsInjectorPlugin({path: config.statisticPath}),
   new webpack.ProvidePlugin(pkg.config.providePlugin),
   new webpack.NoErrorsPlugin(),
   // split vendor js into its own file,
