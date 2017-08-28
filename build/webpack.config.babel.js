@@ -1,20 +1,20 @@
 import path from 'path';
 import {argv} from 'yargs';
 import pkg from '../package.json';
+const spa = pkg.config.spa;
 
 const CDN_ASSETS_URL = '';
 const env = process.env.NODE_ENV;
-const dllPath = env === 'development' ? '/dist' : '..';
-const publicPath = env === 'development' ? '/' : '../';
+const dllPath = env === 'development' ? '/dist' : (spa ? '.' : '..');
+const publicPath = env === 'development' ? '/' : (spa ? './' : '../');
 const bundleConfig = require('../dist/vendors/bundle-config.json');
 const vendors = `${CDN_ASSETS_URL}${dllPath}/vendors/${bundleConfig.vendors.js}`;
 
 
-console.log(env, process.env.NODE_ENV);
-
 export default {
   vendorName: 'vendors/common',
-  spa: false,
+  statisticPath: path.join(__dirname, '../src/components/others/umeng-statistic.html'),
+  dllManifest: require(path.join(__dirname, '../dist/vendors/manifest.json')),
   // baseEntryPath:'src/modules/**/index.js',
   baseEntryPath: [
     'src/modules/test-fragment/index.js',

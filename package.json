@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "config": {
+    "spa": true,
     "devServer": {
       "port": 8812,
       "hot": true,

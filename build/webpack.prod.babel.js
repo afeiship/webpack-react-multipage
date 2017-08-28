@@ -7,15 +7,20 @@ import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 import nx from 'next-js-core2';
 import pkg from '../package.json';
 
+const spa = pkg.config.spa;
 const baseEntries = $.baseEntries;
 let productEntries = {};
 let productPlugins = [];
-let sliceLength = config.spa ? 4 : 12;
+
+const sliceKey = function (inKey) {
+  return spa ? 'index' : inKey.slice(('src/modules/').length);
+};
 
 
 nx.each(baseEntries, function (key) {
-  productEntries[key.slice(sliceLength)] = baseEntries[key];
+  productEntries[sliceKey(key)] = baseEntries[key];
 });
+
 
 productPlugins = [
   new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
@@ -29,10 +34,10 @@ Object.keys(baseEntries).forEach(function (name) {
   if (name.indexOf('index') > -1) {
     let plugin = new HtmlWebpackPlugin(
       nx.mix(config.htmlWebpackOptions, {
-        filename: name.slice(sliceLength) + '.html',
+        filename: sliceKey(name) + '.html',
         template: name + '.jade',
         minify: false,
-        chunks: [config.vendorName, name.slice(sliceLength)]
+        chunks: [config.vendorName, sliceKey(name)]
       })
     );
     productPlugins.push(plugin);
