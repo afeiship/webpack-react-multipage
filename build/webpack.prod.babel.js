@@ -9,13 +9,12 @@ import config from './webpack.config.babel';
 import $ from './webpack.base.babel';
 
 
-const spa = pkg.config.spa;
 const entry = webpackEntries(pkg.config.entry.development);
 let productEntries = {};
 let productPlugins = [];
 
 const sliceKey = function (inKey) {
-  return spa ? 'index' : inKey.slice(('src/modules/').length);
+  return pkg.config.spa ? 'index' : inKey.slice(('src/modules/').length);
 };
 
 
@@ -34,15 +33,16 @@ productPlugins = [
 
 Object.keys(entry).forEach(function (name) {
   if (name.indexOf('index') > -1) {
-    let plugin = new HtmlWebpackPlugin(
-      nx.mix(config.htmlWebpackOptions, {
-        filename: sliceKey(name) + '.html',
-        template: name + '.jade',
-        minify: false,
-        chunks: [config.vendorName, sliceKey(name)]
-      })
+    productPlugins.push(
+      new HtmlWebpackPlugin(
+        nx.mix(config.htmlWebpackOptions, {
+          filename: sliceKey(name) + '.html',
+          template: name + '.jade',
+          minify: false,
+          chunks: [config.vendorName, sliceKey(name)]
+        })
+      )
     );
-    productPlugins.push(plugin);
   }
 });
 
