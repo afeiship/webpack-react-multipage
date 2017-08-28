@@ -1,14 +1,16 @@
 import webpack from 'webpack';
-import $ from './webpack.base.babel';
 import webpackMerge from 'webpack-merge';
-import config from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
+import webpackEntries from 'webpack-entries';
 import nx from 'next-js-core2';
 import pkg from '../package.json';
+import config from './webpack.config.babel';
+import $ from './webpack.base.babel';
+
 
 const spa = pkg.config.spa;
-const baseEntries = $.baseEntries;
+const entry = webpackEntries(pkg.config.entry.development);
 let productEntries = {};
 let productPlugins = [];
 
@@ -17,8 +19,8 @@ const sliceKey = function (inKey) {
 };
 
 
-nx.each(baseEntries, function (key) {
-  productEntries[sliceKey(key)] = baseEntries[key];
+nx.each(entry, function (key) {
+  productEntries[sliceKey(key)] = entry[key];
 });
 
 
@@ -30,7 +32,7 @@ productPlugins = [
   })
 ];
 
-Object.keys(baseEntries).forEach(function (name) {
+Object.keys(entry).forEach(function (name) {
   if (name.indexOf('index') > -1) {
     let plugin = new HtmlWebpackPlugin(
       nx.mix(config.htmlWebpackOptions, {
@@ -46,6 +48,8 @@ Object.keys(baseEntries).forEach(function (name) {
 
 productPlugins.push(new HtmlWebpackPugPlugin());
 
+
+console.log(productEntries);
 export default webpackMerge($, {
   entry: productEntries,
   output: config.output,

@@ -1,17 +1,19 @@
 import webpack from 'webpack';
 import $ from './webpack.base.babel';
 import webpackMerge from 'webpack-merge';
+import webpackEntries from 'webpack-entries';
 import config from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nx from 'next-js-core2';
+import pkg from '../package.json';
 
-const devEnties = $.baseEntries;
+const entry = webpackEntries(pkg.config.entry.development);
 let devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
 ];
 
 
-nx.each(devEnties, function (name) {
+nx.each(entry, function (name) {
   if (name.indexOf('index') > -1) {
     let plugin = new HtmlWebpackPlugin(
       nx.mix(config.htmlWebpackOptions, {
@@ -25,7 +27,7 @@ nx.each(devEnties, function (name) {
 });
 
 export default webpackMerge($, {
-  entry: devEnties,
+  entry,
   output: config.output,
   plugins: devPlugins,
   devtool: '#source-map',

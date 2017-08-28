@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 import AssetsWebpackPlugin from 'assets-webpack-plugin';
 import pkg from '../package.json';
@@ -8,9 +9,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 // common vendors(can be minifed by uglify lodaer:)
 let plugins = [
   new webpack.DllPlugin({
-    path: './dist/vendors/manifest.json',
-    name: '[name]_library',
-    context: __dirname,
+    path: path.resolve(__dirname, pkg.config.dllManifest),
+    name: '[name]_library'
   }),
   new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
   new AssetsWebpackPlugin({

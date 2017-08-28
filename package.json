@@ -18,7 +18,20 @@
   },
   "license": "MIT",
   "config": {
-    "spa": true,
+    "cdnUrl": "",
+    "dllManifest": "../dist/vendors/manifest.json",
+    "entry": {
+      "development": [
+        "src/modules/test-fragment/index.js",
+        "src/modules/tiny-virtual-list/index.js",
+        "src/modules/virtualed-collection/index.js",
+        "src/modules/blank-module/index.js",
+        "src/modules/route1/index.js",
+        "src/modules/router2/index.js"
+      ],
+      "production": "src/modules/**/index.js"
+    },
+    "spa": false,
     "devServer": {
       "port": 8812,
       "hot": true,
@@ -132,7 +145,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.0.0",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.16.0",
+    "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
     "git-info": "github:afeiship/git-info",
