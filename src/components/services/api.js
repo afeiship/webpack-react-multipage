@@ -4,12 +4,12 @@ import Q from 'q';
 
 export default nx.declare({
   statics: {
-    all(apis){
-      return Q.all(apis);
-    },
     init () {
       this.apiWithoutToken();
       this.apiWithToken();
+    },
+    all(apis){
+      return Q.all(apis);
     },
     apiWithoutToken () {
       let Apis = Config.API_WITHOUT_TOKEN;
