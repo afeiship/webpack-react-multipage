@@ -9,15 +9,31 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "predll": "npm run clean",
-    "dll": "webpack --config ./build/webpack.dll.babel.js",
-    "prebuild": "cross-env NODE_ENV=production npm run dll",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.babel.js",
-    "predev": "cross-env NODE_ENV=development npm run dll",
+    "predev-dll": "npm run clean",
+    "preprd-dll": "npm run clean",
+    "dev-dll": "webpack --config ./build/webpack.dev-dll.babel.js",
+    "prd-dll": "webpack --config ./build/webpack.prd-dll.babel.js",
+    "prebuild": "cross-env NODE_ENV=production npm run prd-dll",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prd.babel.js",
+    "predev": "cross-env NODE_ENV=development npm run dev-dll",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --config ./build/webpack.dev.babel.js"
   },
   "license": "MIT",
   "config": {
+    "cdnUrl": "",
+    "dllManifest": "../dist/vendors/manifest.json",
+    "entry": {
+      "development": [
+        "src/modules/test-fragment/index.js",
+        "src/modules/tiny-virtual-list/index.js",
+        "src/modules/virtualed-collection/index.js",
+        "src/modules/blank-module/index.js",
+        "src/modules/route1/index.js",
+        "src/modules/router2/index.js"
+      ],
+      "production": "src/modules/**/index.js"
+    },
+    "spa": false,
     "devServer": {
       "port": 8812,
       "hot": true,
@@ -48,7 +64,6 @@
     "dllVendors": [
       "resolution",
       "fastclick",
-      "next-js-core2",
       "next-wxsdk",
       "next-react-redux",
       "moment",
@@ -96,6 +111,7 @@
     "mixin-decorator": "github:afeiship/mixin-decorator",
     "moment": "^2.18.1",
     "next-axios": "github:afeiship/next-axios",
+    "next-hashlize": "github:afeiship/next-hashlize",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-react-redux": "github:afeiship/next-react-redux",
     "next-scroll-minder": "github:afeiship/next-scroll-minder",
@@ -130,7 +146,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.0.0",
     "cross-env": "^5.0.0",
-    "css-loader": "^0.16.0",
+    "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
     "git-info": "github:afeiship/git-info",

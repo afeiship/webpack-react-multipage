@@ -6,7 +6,6 @@ import {AutoSizer, Collection, InfiniteLoader, WindowScroller} from 'react-virtu
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import nx from 'next-js-core2';
 import {$config} from 'components/scripts/index';
 
 

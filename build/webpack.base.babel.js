@@ -1,14 +1,12 @@
 import config from './webpack.config.babel';
 import path from 'path';
 import webpack from 'webpack';
-import entries from 'webpack-entries';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ScriptsInjectorPlugin from 'scripts-injector-webpack-plugin';
 import gitInfo from 'git-info';
 import {argv} from 'yargs';
 import pkg from '../package.json';
 
-const baseEntries = entries(config.baseEntryPath);
 const devVersionRE = /([\d.]+)/g;
 const argEnv = argv.env || 'test';
 const gitDevVersion = (gitInfo.currentBranch().match(devVersionRE) || [])[0] || '1.0.0';
@@ -16,21 +14,18 @@ const argVersion = (argEnv === 'test') ? gitDevVersion + gitInfo.shortHash() : g
 
 
 const plugins = [
-  new ScriptsInjectorPlugin({
-    path: path.join(__dirname, '../src/components/others/umeng-statistic.html')
-  }),
+  new ScriptsInjectorPlugin({path: config.statisticPath}),
   new webpack.ProvidePlugin(pkg.config.providePlugin),
   new webpack.NoErrorsPlugin(),
   // split vendor js into its own file,
   new ExtractTextPlugin('[name]-[chunkhash:6].css'),
   new webpack.DllReferencePlugin({
     context: __dirname,
-    manifest: require('../dist/vendors/manifest.json'),
+    manifest: require(pkg.config.dllManifest),
   })
 ];
 
 export default {
-  baseEntries,
   plugins,
   node: {
     fs: "empty"
