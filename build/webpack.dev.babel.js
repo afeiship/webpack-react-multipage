@@ -12,7 +12,6 @@ let devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
 ];
 
-
 nx.each(entry, function (name) {
   if (name.indexOf('index') > -1) {
     let plugin = new HtmlWebpackPlugin(

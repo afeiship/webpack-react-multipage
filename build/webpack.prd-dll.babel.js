@@ -24,9 +24,6 @@ let plugins = [
   // new BundleAnalyzerPlugin()
 ];
 
-//for dev/prd env:
-env === 'development' && plugins.splice(1, 1);
-
 export default {
   output: {
     path: './dist/vendors',

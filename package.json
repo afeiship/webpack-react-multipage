@@ -9,11 +9,13 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "predll": "npm run clean",
-    "dll": "webpack --config ./build/webpack.dll.babel.js",
-    "prebuild": "cross-env NODE_ENV=production npm run dll",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.babel.js",
-    "predev": "cross-env NODE_ENV=development npm run dll",
+    "predev-dll": "npm run clean",
+    "preprd-dll": "npm run clean",
+    "dev-dll": "webpack --config ./build/webpack.dev-dll.babel.js",
+    "prd-dll": "webpack --config ./build/webpack.prd-dll.babel.js",
+    "prebuild": "cross-env NODE_ENV=production npm run prd-dll",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prd.babel.js",
+    "predev": "cross-env NODE_ENV=development npm run dev-dll",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --config ./build/webpack.dev.babel.js"
   },
   "license": "MIT",
@@ -62,7 +64,6 @@
     "dllVendors": [
       "resolution",
       "fastclick",
-      "next-js-core2",
       "next-wxsdk",
       "next-react-redux",
       "moment",
