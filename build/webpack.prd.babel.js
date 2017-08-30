@@ -11,7 +11,7 @@ import $ from './webpack.base.babel';
 
 const entry = webpackEntries(pkg.config.entry.development);
 let productEntries = {};
-let productPlugins = [];
+let productPlugins = [ new HtmlWebpackPugPlugin() ];
 
 const sliceKey = function (inKey) {
   return pkg.config.spa ? 'index' : inKey.slice(('src/modules/').length);
@@ -26,7 +26,7 @@ nx.each(entry, function (key) {
 productPlugins = [
   new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
   new webpack.optimize.CommonsChunkPlugin({
-    name: config.vendorName,
+    name: pkg.config.vendorName,
     chunks: Object.keys(productEntries)
   })
 ];
@@ -39,17 +39,16 @@ Object.keys(entry).forEach(function (name) {
           filename: sliceKey(name) + '.html',
           template: name + '.jade',
           minify: false,
-          chunks: [config.vendorName, sliceKey(name)]
+          chunks: [
+            pkg.config.vendorName,
+            sliceKey(name)
+          ]
         })
       )
     );
   }
 });
 
-productPlugins.push(new HtmlWebpackPugPlugin());
-
-
-console.log(productEntries);
 export default webpackMerge($, {
   entry: productEntries,
   output: config.output,

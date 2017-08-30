@@ -10,7 +10,6 @@ const vendors = `${pkg.config.cdnUrl}${dllPath}/vendors/${bundleConfig.vendors.j
 
 
 export default {
-  vendorName: 'vendors/common',
   statisticPath: path.join(__dirname, '../src/components/others/umeng-statistic.html'),
   htmlWebpackOptions: {
     hash: 6,

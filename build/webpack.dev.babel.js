@@ -18,7 +18,7 @@ nx.each(entry, function (name) {
         nx.mix(config.htmlWebpackOptions, {
           filename: name + '.html',
           template: name + '.jade',
-          chunks: [config.vendorName, name]
+          chunks: [pkg.config.vendorName, name]
         })
       )
     );

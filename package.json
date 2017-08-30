@@ -21,20 +21,23 @@
   },
   "license": "MIT",
   "config": {
+    "spa": false,
     "cdnUrl": "",
     "dllManifest": "../dist/vendors/manifest.json",
+    "extractCssName": "[name]-[chunkhash:6].css",
+    "vendorName": "vendors/common",
+    "extensions": [
+      "",
+      ".js",
+      ".json",
+      ".scss"
+    ],
     "entry": {
       "development": [
-        "src/modules/test-fragment/index.js",
-        "src/modules/tiny-virtual-list/index.js",
-        "src/modules/virtualed-collection/index.js",
-        "src/modules/blank-module/index.js",
-        "src/modules/route1/index.js",
-        "src/modules/router2/index.js"
+        "src/modules/index/index.js"
       ],
       "production": "src/modules/**/index.js"
     },
-    "spa": false,
     "devServer": {
       "port": 8812,
       "hot": true,
@@ -136,6 +139,7 @@
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.0.0",
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-transform-array-from": "^1.0.0",
     "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -151,6 +155,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.4",
     "git-info": "github:afeiship/git-info",
+    "git-version": "github:afeiship/git-version",
     "glob": "^7.0.6",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^2.22.0",

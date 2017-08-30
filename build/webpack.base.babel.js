@@ -1,32 +1,25 @@
-import config from './webpack.config.babel';
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ScriptsInjectorPlugin from 'scripts-injector-webpack-plugin';
-import gitInfo from 'git-info';
 import {argv} from 'yargs';
+import config from './webpack.config.babel';
 import pkg from '../package.json';
+import {semver, hash} from 'git-version';
 
-const devVersionRE = /([\d.]+)/g;
-const argEnv = argv.env || 'test';
-const gitDevVersion = (gitInfo.currentBranch().match(devVersionRE) || [])[0] || '1.0.0';
-const argVersion = (argEnv === 'test') ? gitDevVersion + gitInfo.shortHash() : gitDevVersion;
-
-
-const plugins = [
-  new ScriptsInjectorPlugin({path: config.statisticPath}),
-  new webpack.ProvidePlugin(pkg.config.providePlugin),
-  new webpack.NoErrorsPlugin(),
-  // split vendor js into its own file,
-  new ExtractTextPlugin('[name]-[chunkhash:6].css'),
-  new webpack.DllReferencePlugin({
-    context: __dirname,
-    manifest: require(pkg.config.dllManifest),
-  })
-];
 
 export default {
-  plugins,
+  plugins: [
+    new ScriptsInjectorPlugin({path: config.statisticPath}),
+    new webpack.ProvidePlugin(pkg.config.providePlugin),
+    new webpack.NoErrorsPlugin(),
+    // split vendor js into its own file,
+    new ExtractTextPlugin(pkg.config.extractCssName),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require(pkg.config.dllManifest),
+    })
+  ],
   node: {
     fs: "empty"
   },
@@ -42,11 +35,11 @@ export default {
         replace: [
           {
             from: '__BUILD_VERSION__',
-            to: argVersion
+            to: `${semver()}_${hash()}`
           },
           {
             from: '__BUILD_ENV__',
-            to: argEnv
+            to: argv.env || 'test'
           }
         ]
       }
@@ -79,15 +72,7 @@ export default {
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.scss'],
-    alias: {
-      node_modules: path.join(__dirname, '../node_modules'),
-      bower_components: path.join(__dirname, '../bower_components'),
-      components: path.join(__dirname, '../src/components'),
-      modules: path.join(__dirname, '../src/modules'),
-      images: path.join(__dirname, '../src/assets/images'),
-      vendor: path.join(__dirname, '../src/vendor'),
-    }
+    extensions: pkg.config.extensions,
   }
 };
 
