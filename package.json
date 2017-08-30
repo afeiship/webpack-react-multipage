@@ -74,6 +74,10 @@
       "react-swiper"
     ],
     "uglify": {
+      "parallel": {
+        "cache": true,
+        "workers": 2
+      },
       "compress": {
         "negate_iife": false,
         "unsafe_comps": true,
@@ -161,6 +165,7 @@
     "html-webpack-plugin": "^2.22.0",
     "html-webpack-pug-plugin": "^0.2.0",
     "imagemin-pngquant": "^5.0.0",
+    "img-loader": "^2.0.0",
     "import-glob-loader": "^1.1.0",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",

@@ -9,7 +9,7 @@ import config from './webpack.config.babel';
 import $ from './webpack.base.babel';
 
 
-const entry = webpackEntries(pkg.config.entry.development);
+const entry = webpackEntries(pkg.config.entry.production);
 let productEntries = {};
 let productPlugins = [ new HtmlWebpackPugPlugin() ];
 
