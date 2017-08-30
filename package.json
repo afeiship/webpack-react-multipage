@@ -8,11 +8,12 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
+    "analyzer": "webpack --config ./build/webpack.dll-analyzer.babel.js",
     "clean": "rimraf dist",
     "predev-dll": "npm run clean",
     "preprd-dll": "npm run clean",
-    "dev-dll": "webpack --config ./build/webpack.dev-dll.babel.js",
-    "prd-dll": "webpack --config ./build/webpack.prd-dll.babel.js",
+    "dev-dll": "webpack --config ./build/webpack.dll-dev.babel.js",
+    "prd-dll": "webpack --config ./build/webpack.dll-prd.babel.js",
     "prebuild": "cross-env NODE_ENV=production npm run prd-dll",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prd.babel.js",
     "predev": "cross-env NODE_ENV=development npm run dev-dll",

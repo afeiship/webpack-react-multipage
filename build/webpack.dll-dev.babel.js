@@ -3,7 +3,6 @@ import webpack from 'webpack';
 import AssetsWebpackPlugin from 'assets-webpack-plugin';
 import pkg from '../package.json';
 
-const env = process.env.NODE_ENV;
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // common vendors(can be minifed by uglify lodaer:)

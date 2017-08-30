@@ -14,7 +14,7 @@ npm run build -- --env=pre
 - [x] dev-dll/prod-dll files.
 - [ ] css image sprite
 - [x] ejs -> jade/pug with jade mixin/extend and etc.
-- [ ] jade templates Generator & basic template
+- [x] jade templates Generator & basic template
 - [ ] move config to Package.json->config key.
 - [ ] React/ReactDOM to global
 - [ ] UglifyJsPlugin options to config
