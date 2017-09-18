@@ -2,7 +2,7 @@ import AppBase,{TestComp} from 'components/scripts/index';
 import {
   Link,
   Route,
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from 'react-router-dom';
 
 import About from './about';

@@ -34,7 +34,7 @@
     ],
     "entry": {
       "development": [
-        "src/modules/index/index.js"
+        "src/modules/router2/index.js"
       ],
       "production": "src/modules/**/index.js"
     },
@@ -43,6 +43,9 @@
       "hot": true,
       "host": "train-h5.dcpai.cn",
       "stats": "errors-only",
+      "historyApiFallback": {
+        "index": "src/modules/router2/index.html"
+      },
       "proxy": {
         "/weipai": {
           "target": "http://139.196.57.60:8082",
