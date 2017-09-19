@@ -12,6 +12,9 @@ import {ReduxAppBase} from 'next-react-redux';
 import Topics from './topics';
 import autobind from 'autobind-decorator';
 
+//support favicon:
+import 'images/favicon.ico';
+
 export default class extends AppBase {
   static initialState() {
     return {

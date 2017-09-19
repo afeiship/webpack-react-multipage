@@ -67,6 +67,14 @@ export default {
         }
       },
       {
+        test: /\.(ico)$/i,
+        loader: 'url-loader',
+        query: {
+          limit: 1,
+          name: 'images/[name].[ext]'
+        }
+      },
+      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: 'img-loader',
         query: {
