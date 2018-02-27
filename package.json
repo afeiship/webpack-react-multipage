@@ -20,113 +20,20 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --colors --config ./build/webpack.dev.babel.js"
   },
   "license": "MIT",
-  "config": {
-    "spa": false,
-    "cdnUrl": "",
-    "dllManifest": "../dist/vendors/manifest.json",
-    "extractCssName": "[name]-[chunkhash:6].css",
-    "vendorName": "vendors/common",
-    "extensions": [
-      "",
-      ".js",
-      ".json",
-      ".scss"
-    ],
-    "entry": {
-      "development": [
-        "src/modules/test-module/index.js"
-      ],
-      "production": "src/modules/**/index.js"
-    },
-    "devServer": {
-      "port": 8816,
-      "hot": true,
-      "host": "0.0.0.0",
-      "stats": "errors-only",
-      "proxy": {
-        "/weipai": {
-          "target": "http://139.196.57.60:8082",
-          "changeOrigin": true
-        }
-      }
-    },
-    "providePlugin": {
-      "nx": "next-js-core2",
-      "Q": "q",
-      "React": "react",
-      "ReactDOM": "react-dom",
-      "mixin": "mixin-decorator",
-      "autobind": "autobind-decorator"
-    },
-    "dllVendors": [
-      "resolution",
-      "fastclick",
-      "next-wxsdk",
-      "next-react-redux",
-      "moment",
-      "react-swiper"
-    ],
-    "uglify": {
-      "parallel": {
-        "cache": true,
-        "workers": 2
-      },
-      "compress": {
-        "negate_iife": false,
-        "unsafe_comps": true,
-        "properties": true,
-        "keep_fargs": false,
-        "pure_getters": true,
-        "collapse_vars": true,
-        "unsafe": true,
-        "warnings": false,
-        "screw_ie8": true,
-        "sequences": true,
-        "dead_code": true,
-        "drop_debugger": true,
-        "comparisons": true,
-        "conditionals": true,
-        "evaluate": true,
-        "booleans": true,
-        "loops": true,
-        "unused": true,
-        "hoist_funs": true,
-        "if_return": true,
-        "join_vars": true,
-        "cascade": true,
-        "drop_console": true,
-        "pure_funcs": [
-          "classCallCheck",
-          "invariant",
-          "warning"
-        ]
-      },
-      "output": {
-        "comments": false
-      }
-    }
-  },
   "dependencies": {
     "autobind-decorator": "^1.3.4",
     "fastclick": "^1.0.6",
     "mixin-decorator": "github:afeiship/mixin-decorator",
-    "moment": "^2.18.1",
     "next-axios": "github:afeiship/next-axios",
     "next-hashlize": "github:afeiship/next-hashlize",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-react-redux": "github:afeiship/next-react-redux",
     "next-scroll-minder": "github:afeiship/next-scroll-minder",
     "next-store": "github:afeiship/next-store",
-    "next-wxsdk": "github:afeiship/next-wxsdk",
     "react": "^15.3.2",
-    "react-addons-create-fragment": "^15.6.0",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-router-dom": "^4.1.1",
-    "react-scroller": "github:afeiship/react-scroller",
-    "react-swiper": "github:afeiship/react-swiper",
-    "react-tiny-virtual-list": "^2.0.5",
-    "react-virtualized": "^9.8.0",
     "resolution": "github:afeiship/resolution",
     "webkit-sass-reset": "afeiship/webkit-sass-reset",
     "webkit-sassui-short-name": "afeiship/webkit-sassui-short-name",

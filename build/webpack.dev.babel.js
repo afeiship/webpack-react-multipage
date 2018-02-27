@@ -5,13 +5,12 @@ import webpackEntries from 'webpack-entries';
 import config from './webpack.config.babel';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import nx from 'next-js-core2';
-import pkg from '../package.json';
+import pkgConfig from '../config.json';
 
-const entry = webpackEntries(pkg.config.entry.development);
+const entry = webpackEntries(pkgConfig.entry.development);
 let plugins = [new webpack.HotModuleReplacementPlugin()];
 
 
-console.log(entry);
 nx.each(entry, function (name) {
   if (name.indexOf('index') > -1) {
     plugins.push(
@@ -19,7 +18,7 @@ nx.each(entry, function (name) {
         nx.mix(config.htmlWebpackOptions, {
           filename: name + '.html',
           template: name + '.ejs',
-          chunks: [pkg.config.vendorName, name]
+          chunks: [pkgConfig.vendorName, name]
         })
       )
     );

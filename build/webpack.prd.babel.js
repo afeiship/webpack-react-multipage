@@ -4,17 +4,17 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPugPlugin from 'html-webpack-pug-plugin';
 import webpackEntries from 'webpack-entries';
 import nx from 'next-js-core2';
-import pkg from '../package.json';
+import pkgConfig from '../config.json';
 import config from './webpack.config.babel';
 import $ from './webpack.base.babel';
 
 
-const entry = webpackEntries(pkg.config.entry.production);
+const entry = webpackEntries(pkgConfig.entry.production);
 let productEntries = {};
 let productPlugins = [ new HtmlWebpackPugPlugin() ];
 
 const sliceKey = function (inKey) {
-  return pkg.config.spa ? 'index' : inKey.slice(('src/modules/').length);
+  return pkgConfig.spa ? 'index' : inKey.slice(('src/modules/').length);
 };
 
 
@@ -24,9 +24,9 @@ nx.each(entry, function (key) {
 
 
 productPlugins = [
-  new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
+  new webpack.optimize.UglifyJsPlugin(pkgConfig.uglify),
   new webpack.optimize.CommonsChunkPlugin({
-    name: pkg.config.vendorName,
+    name: pkgConfig.vendorName,
     chunks: Object.keys(productEntries)
   })
 ];
@@ -40,7 +40,7 @@ Object.keys(entry).forEach(function (name) {
           template: name + '.ejs',
           minify: false,
           chunks: [
-            pkg.config.vendorName,
+            pkgConfig.vendorName,
             sliceKey(name)
           ]
         })

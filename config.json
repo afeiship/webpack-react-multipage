@@ -1,0 +1,85 @@
+{
+  "spa": false,
+  "cdnUrl": "",
+  "dllManifest": "../dist/vendors/manifest.json",
+  "extractCssName": "[name]-[chunkhash:6].css",
+  "vendorName": "vendors/common",
+  "extensions": [
+    "",
+    ".js",
+    ".json",
+    ".scss"
+  ],
+  "entry": {
+    "development": [
+      "src/modules/test-module/index.js"
+    ],
+    "production": "src/modules/**/index.js"
+  },
+  "devServer": {
+    "port": 8816,
+    "hot": true,
+    "host": "0.0.0.0",
+    "stats": "errors-only",
+    "proxy": {
+      "/weipai": {
+        "target": "http://139.196.57.60:8082",
+        "changeOrigin": true
+      }
+    }
+  },
+  "providePlugin": {
+    "nx": "next-js-core2",
+    "React": "react",
+    "ReactDOM": "react-dom",
+    "mixin": "mixin-decorator",
+    "autobind": "autobind-decorator"
+  },
+  "dllVendors": [
+    "resolution",
+    "fastclick",
+    "next-wxsdk",
+    "next-react-redux",
+    "moment",
+    "react-swiper"
+  ],
+  "uglify": {
+    "parallel": {
+      "cache": true,
+      "workers": 2
+    },
+    "compress": {
+      "negate_iife": false,
+      "unsafe_comps": true,
+      "properties": true,
+      "keep_fargs": false,
+      "pure_getters": true,
+      "collapse_vars": true,
+      "unsafe": true,
+      "warnings": false,
+      "screw_ie8": true,
+      "sequences": true,
+      "dead_code": true,
+      "drop_debugger": true,
+      "comparisons": true,
+      "conditionals": true,
+      "evaluate": true,
+      "booleans": true,
+      "loops": true,
+      "unused": true,
+      "hoist_funs": true,
+      "if_return": true,
+      "join_vars": true,
+      "cascade": true,
+      "drop_console": true,
+      "pure_funcs": [
+        "classCallCheck",
+        "invariant",
+        "warning"
+      ]
+    },
+    "output": {
+      "comments": false
+    }
+  }
+}

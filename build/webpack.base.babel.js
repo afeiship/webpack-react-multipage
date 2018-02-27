@@ -4,20 +4,20 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ScriptsInjectorPlugin from 'scripts-injector-webpack-plugin';
 import {argv} from 'yargs';
 import config from './webpack.config.babel';
-import pkg from '../package.json';
+import pkgConfig from '../config.json';
 import {semver, hash} from 'git-version';
 
 
 export default {
   plugins: [
     new ScriptsInjectorPlugin({path: config.statisticPath}),
-    new webpack.ProvidePlugin(pkg.config.providePlugin),
+    new webpack.ProvidePlugin(pkgConfig.providePlugin),
     new webpack.NoErrorsPlugin(),
     // split vendor js into its own file,
-    new ExtractTextPlugin(pkg.config.extractCssName),
+    new ExtractTextPlugin(pkgConfig.extractCssName),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pkg.config.dllManifest),
+      manifest: require(pkgConfig.dllManifest),
     })
   ],
   node: {
@@ -130,7 +130,7 @@ export default {
     ]
   },
   resolve: {
-    extensions: pkg.config.extensions,
+    extensions: pkgConfig.extensions,
   }
 };
 

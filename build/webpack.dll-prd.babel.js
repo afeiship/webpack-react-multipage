@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import AssetsWebpackPlugin from 'assets-webpack-plugin';
-import pkg from '../package.json';
+import pkgConfig from '../config.json';
 
 export default {
   output: {
@@ -10,14 +10,14 @@ export default {
     library: '[name]_library'
   },
   entry: {
-    vendors: pkg.config.dllVendors
+    vendors: pkgConfig.dllVendors
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.resolve(__dirname, pkg.config.dllManifest),
+      path: path.resolve(__dirname, pkgConfig.dllManifest),
       name: '[name]_library'
     }),
-    new webpack.optimize.UglifyJsPlugin(pkg.config.uglify),
+    new webpack.optimize.UglifyJsPlugin(pkgConfig.uglify),
     new AssetsWebpackPlugin({
       filename: 'bundle-config.json',
       path: './dist/vendors'

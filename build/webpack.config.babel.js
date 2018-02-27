@@ -1,12 +1,12 @@
 import path from 'path';
 import {argv} from 'yargs';
-import pkg from '../package.json';
-const spa = pkg.config.spa;
+import pkgConfig from '../config.json';
+const spa = pkgConfig.spa;
 const env = process.env.NODE_ENV;
 const dllPath = env === 'development' ? '/dist' : (spa ? '.' : '..');
 const publicPath = env === 'development' ? '/' : (spa ? './' : '../');
 const bundleConfig = require('../dist/vendors/bundle-config.json');
-const vendors = `${pkg.config.cdnUrl}${dllPath}/vendors/${bundleConfig.vendors.js}`;
+const vendors = `${pkgConfig.cdnUrl}${dllPath}/vendors/${bundleConfig.vendors.js}`;
 
 
 export default {
@@ -18,7 +18,7 @@ export default {
       vendors: vendors
     }
   },
-  devServer: pkg.config.devServer,
+  devServer: pkgConfig.devServer,
   output: {
     path: path.join(__dirname, '..', 'dist'),
     filename: '[name]-[hash:6].js',
