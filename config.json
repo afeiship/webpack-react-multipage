@@ -36,12 +36,10 @@
     "autobind": "autobind-decorator"
   },
   "dllVendors": [
+    "next-js-core2",
     "resolution",
     "fastclick",
-    "next-wxsdk",
-    "next-react-redux",
-    "moment",
-    "react-swiper"
+    "next-react-redux"
   ],
   "uglify": {
     "parallel": {
