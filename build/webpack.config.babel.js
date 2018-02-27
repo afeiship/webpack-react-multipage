@@ -13,9 +13,8 @@ export default {
   statisticPath: path.join(__dirname, '../src/components/others/umeng-statistic.html'),
   htmlWebpackOptions: {
     hash: 6,
-    inject: false,
+    inject: true,
     data: {
-      cdn_ionicons: 'http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.css',
       vendors: vendors
     }
   },

@@ -37,7 +37,7 @@ Object.keys(entry).forEach(function (name) {
       new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions, {
           filename: sliceKey(name) + '.html',
-          template: name + '.jade',
+          template: name + '.ejs',
           minify: false,
           chunks: [
             pkg.config.vendorName,

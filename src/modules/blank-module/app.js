@@ -1,8 +1,4 @@
-import AppBase,{TestComp} from 'components/scripts/index';
-
-import React from 'react';
-import {ReduxAppBase} from 'next-react-redux';
-import autobind from 'autobind-decorator';
+import AppBase from 'components/scripts/index';
 
 export default class extends AppBase {
   static initialState() {
@@ -29,25 +25,18 @@ export default class extends AppBase {
     }
   }
 
-  _onClick = e => {
+  @autobind
+  _onClick() {
     let {test} = AppBase.$.local;
     test++;
     AppBase.$.local={test:test};
   }
 
-  _onClick2 = e => {
-    //location.replace('./index');
-    // history.back();
-    window.history.go(-2);
-  };
-
-
   render() {
     const {test} = AppBase.$.local;
     return (
-      <div className="blank-module-view">
-        member-list.1212...{test}
-        <button onClick={this._onClick2}>GoTo Index...</button>
+      <div className="blank-module">
+        {test}
         <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );

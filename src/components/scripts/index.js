@@ -3,7 +3,7 @@ export default require('./app-base').default;
 
 /*===mixins start===*/
 export const OnChangeMixin = require('./test-comp').default;
-export const TestApiMixin=require('./test-api').default;
+// export const TestApiMixin=require('./test-api').default;
 /*===mixins end===*/
 
 /*===components start===*/

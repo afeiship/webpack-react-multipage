@@ -34,28 +34,18 @@
     ],
     "entry": {
       "development": [
-        "src/modules/router2/index.js"
+        "src/modules/test-module/index.js"
       ],
       "production": "src/modules/**/index.js"
     },
     "devServer": {
-      "port": 8812,
+      "port": 8816,
       "hot": true,
-      "host": "train-h5.dcpai.cn",
+      "host": "0.0.0.0",
       "stats": "errors-only",
-      "historyApiFallback": {
-        "index": "src/modules/router2/index.html"
-      },
       "proxy": {
         "/weipai": {
           "target": "http://139.196.57.60:8082",
-          "changeOrigin": true
-        },
-        "/shanggu": {
-          "target": "http://train-h5.dcpai.cn:80",
-          "pathRewrite": {
-            "^/shanggu": "/src/modules"
-          },
           "changeOrigin": true
         }
       }
@@ -137,7 +127,13 @@
     "react-swiper": "github:afeiship/react-swiper",
     "react-tiny-virtual-list": "^2.0.5",
     "react-virtualized": "^9.8.0",
-    "resolution": "github:afeiship/resolution"
+    "resolution": "github:afeiship/resolution",
+    "webkit-sass-reset": "afeiship/webkit-sass-reset",
+    "webkit-sassui-short-name": "afeiship/webkit-sassui-short-name",
+    "webkit-sass-generators": "afeiship/webkit-sass-generators",
+    "webkit-sass-functions": "afeiship/webkit-sass-functions",
+    "webkit-sass-mixins": "afeiship/webkit-sass-mixins",
+    "webkit-sass-flexbox-grid": "afeiship/webkit-sass-flexbox-grid"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",

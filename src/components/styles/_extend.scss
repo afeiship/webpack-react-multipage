@@ -15,16 +15,3 @@
 .ovh{
   overflow: hidden;
 }
-
-.left-line{
-  position: absolute;
-  left:0;
-  @include webkit-sassui-hairline('left');
-}
-
-
-.right-line{
-  position: absolute;
-  right:0;
-  @include webkit-sassui-hairline('right');
-}

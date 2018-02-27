@@ -11,13 +11,14 @@ const entry = webpackEntries(pkg.config.entry.development);
 let plugins = [new webpack.HotModuleReplacementPlugin()];
 
 
+console.log(entry);
 nx.each(entry, function (name) {
   if (name.indexOf('index') > -1) {
     plugins.push(
       new HtmlWebpackPlugin(
         nx.mix(config.htmlWebpackOptions, {
           filename: name + '.html',
-          template: name + '.jade',
+          template: name + '.ejs',
           chunks: [pkg.config.vendorName, name]
         })
       )
