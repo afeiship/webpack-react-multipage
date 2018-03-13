@@ -18,7 +18,6 @@
         ],
         "alias": {
           "node_modules": "./node_modules",
-          "bower_components": "./bower_components",
           "components": "./src/components",
           "modules": "./src/modules",
           "images": "./src/assets/images"

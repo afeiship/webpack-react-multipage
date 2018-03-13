@@ -10,6 +10,10 @@ npm run build -- --env=pre
 
 ## todos:
 - [ ] BUG!!!   -webkit-box-orient: vertical; will be removed from css
+- [ ] latest mixin support
+- [ ] CDN NOT WORK
+- [ ] APPCache solution
+- [ ] sass/css standalone entry
 - [x] cdn for react/react-dom
 - [ ] local fonts/images support.
 - [x] dev-dll/prod-dll files.
