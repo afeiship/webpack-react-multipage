@@ -12,6 +12,7 @@
   ],
   "entry": {
     "development": [
+      "src/modules/blank-module/index.js",
       "src/modules/test-module/index.js"
     ],
     "production": "src/modules/**/index.js"

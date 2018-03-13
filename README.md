@@ -9,6 +9,7 @@ npm run build -- --env=pre
 ```
 
 ## todos:
+- [ ] BUG!!!   -webkit-box-orient: vertical; will be removed from css
 - [x] cdn for react/react-dom
 - [ ] local fonts/images support.
 - [x] dev-dll/prod-dll files.
@@ -20,6 +21,7 @@ npm run build -- --env=pre
 - [ ] UglifyJsPlugin options to config
 - [ ] HtmlWebpackPlugin for multiple page to npm-pkg.
 - [ ] SSR for next-react-redux.
+
 
 ## resource:
 + http://blog.csdn.net/fengyinchao/article/details/52100357

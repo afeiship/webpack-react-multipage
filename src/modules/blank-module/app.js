@@ -37,6 +37,9 @@ export default class extends AppBase {
     return (
       <div className="blank-module">
         {test}
+        <header>
+          <h1 className="lc-1 ">我是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题</h1>
+        </header>
         <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );
