@@ -13,15 +13,15 @@ const WeiPaiHttp = nx.declare({
     }
   },
   methods: {
-    init: function () {
-      //this.base();
-      this.$base.init();
-      this.setHeaders({
-        common: {
-          'Power by': 'Fei de next framework'
-        }
-      })
-    },
+    // init: function () {
+    //   //this.base();
+    //   this.$base.init();
+    //   this.setHeaders({
+    //     common: {
+    //       'Power by': 'Fei de next framework'
+    //     }
+    //   })
+    // },
     toData: function (inResponse) {
       return inResponse.data;
     }

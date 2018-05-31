@@ -1,4 +1,4 @@
-import AppBase from 'components/scripts/index';
+import AppBase from 'components';
 
 export default class extends AppBase {
   static initialState() {
@@ -25,7 +25,6 @@ export default class extends AppBase {
     }
   }
 
-  @autobind
   _onClick() {
     let {test} = AppBase.$.local;
     test++;

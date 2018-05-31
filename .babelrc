@@ -9,22 +9,6 @@
     "transform-class-properties",
     "transform-es2015-spread",
     "transform-object-rest-spread",
-    "transform-decorators-legacy",
-    [
-      "module-resolver",
-      {
-        "root": [
-          "."
-        ],
-        "alias": {
-          "node_modules": "./node_modules",
-          "components": "./src/components",
-          "modules": "./src/modules",
-          "images": "./src/assets/images"
-        }
-      }
-    ]
-  ],
-  "ignore": [
+    "transform-decorators-legacy"
   ]
 }

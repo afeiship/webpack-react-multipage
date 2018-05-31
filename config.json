@@ -1,84 +1,35 @@
 {
-  "spa": false,
-  "cdnUrl": "",
-  "dllManifest": "../dist/vendors/manifest.json",
-  "extractCssName": "[name]-[chunkhash:6].css",
-  "vendorName": "vendors/common",
-  "extensions": [
-    "",
-    ".js",
-    ".json",
-    ".scss"
-  ],
-  "entry": {
-    "development": [
-      "src/modules/blank-module/index.js",
-      "src/modules/test-module/index.js"
-    ],
-    "production": "src/modules/**/index.js"
-  },
-  "devServer": {
-    "port": 8816,
-    "hot": true,
-    "host": "0.0.0.0",
-    "stats": "errors-only",
-    "proxy": {
-      "/weipai": {
-        "target": "http://139.196.57.60:8082",
-        "changeOrigin": true
-      }
-    }
-  },
-  "providePlugin": {
-    "nx": "next-js-core2",
-    "React": "react",
-    "ReactDOM": "react-dom",
-    "mixin": "mixin-decorator",
-    "autobind": "autobind-decorator"
-  },
-  "dllVendors": [
+  "port": "3010",
+  "vendors": [
     "next-js-core2",
-    "resolution",
-    "fastclick",
-    "next-react-redux"
+    "next-react-redux",
+    "mixin-decorator",
+    "classnames",
+    "react-router",
+    "react-router-dom",
+    "object-assign"
   ],
-  "uglify": {
-    "parallel": {
-      "cache": true,
-      "workers": 2
+  "dev": {
+    "publicPath": "./",
+    "libs": {
+      "react": "/react/umd/react.development.js",
+      "react-dom": "/react-dom/umd/react-dom.development.js"
     },
-    "compress": {
-      "negate_iife": false,
-      "unsafe_comps": true,
-      "properties": true,
-      "keep_fargs": false,
-      "pure_getters": true,
-      "collapse_vars": true,
-      "unsafe": true,
-      "warnings": false,
-      "screw_ie8": true,
-      "sequences": true,
-      "dead_code": true,
-      "drop_debugger": true,
-      "comparisons": true,
-      "conditionals": true,
-      "evaluate": true,
-      "booleans": true,
-      "loops": true,
-      "unused": true,
-      "hoist_funs": true,
-      "if_return": true,
-      "join_vars": true,
-      "cascade": true,
-      "drop_console": true,
-      "pure_funcs": [
-        "classCallCheck",
-        "invariant",
-        "warning"
-      ]
+    "proxy": {
+      "/api": "http://120.27.13.225:80"
     },
-    "output": {
-      "comments": false
-    }
+    "entries": [
+      "src/modules/blank-module/index.js"
+    ]
+  },
+  "prd": {
+    "publicPath": "/",
+    "libs": {
+      "react": "//cdn.bootcss.com/react/16.4.0/umd/react.production.min.js",
+      "react-dom": "//cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"
+    },
+    "entries": [
+      "src/modules/**/index.js"
+    ]
   }
 }

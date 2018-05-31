@@ -6,13 +6,11 @@
 @import 'node_modules/webkit-sassui-short-name/dist/webkit-sassui-short-name.scss';
 
 
-
-
-@import "./colors";
-@import "./extend";
-@import "./generators";
-@import "./mixins";
-@import "./icon";
+@import "colors";
+@import "extend";
+@import "generators";
+@import "mixins";
+@import "icon";
 
 
 @import 'my/*';

@@ -8,6 +8,8 @@
 </head>
 <body class="test-module-body">
   <main id="app"></main>
-  <script type="text/javascript" src="<%= htmlWebpackPlugin.options.data.vendors %>"></script>
+  <!-- Dependencies -->
+  <script src="<%= htmlWebpackPlugin.options.libs['react'] %>"></script>
+  <script src="<%= htmlWebpackPlugin.options.libs['react-dom'] %>"></script>
 </body>
 </html>
