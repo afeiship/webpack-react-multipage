@@ -12,3 +12,6 @@ npm run build -- --env=pre
 - [x] webpack 4.x
 - [x] react 16+
 - [x] multipage support
+
+## resouces:
++ https://github.com/lili21/webpack4-demo
