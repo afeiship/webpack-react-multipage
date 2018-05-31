@@ -18,8 +18,8 @@ const htmlPlugins = nx.map(webpackEntries(entries), (key, value) => {
     hash: 6,
     inject: true,
     template: resolve(__dirname, `${key}.ejs`),
-    filename: resolve(__dirname, `dist/${entryKey}.html`),
-    chunks: ['assets/vendors', 'assets/commons', entryKey]
+    filename: resolve(__dirname, `dist/${entryKey}/index.html`),
+    chunks: ['vendors', 'commons', entryKey]
   })
 });
 
@@ -28,9 +28,7 @@ module.exports = {
   mode: config[argv.env],
   entry,
   output: {
-    filename: '[name]/scripts/[name]-[hash:6].bundle.js',
-    path: resolve(__dirname, 'dist'),
-    chunkFilename: '[id]-[hash:6].js',
+    filename: '[name]/[name]-[hash].js'
   },
   resolve: {
     alias: {
@@ -54,8 +52,8 @@ module.exports = {
         use: ['babel-loader'],
         include: [
           resolve(__dirname, "src"),
-          resolve(__dirname, "node_modules/mixin-decorator"),
-          resolve(__dirname, "node_modules/react-dynamic-router")
+          resolve(__dirname, "node_mixin-decorator"),
+          resolve(__dirname, "node_react-dynamic-router")
         ]
       },
       {
@@ -106,8 +104,24 @@ module.exports = {
     'react': 'React',
     'react-dom': 'ReactDOM',
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2,
+          name: 'commons',
+          enforce: true
+        }
+      }
+    }
+  },
+  performance: {
+    hints: false
+  },
   plugins: [
-    new ExtractTextPlugin('assets/styles/[name]-[hash].css'),
+    ...htmlPlugins,
+    new ExtractTextPlugin('[name]/[name]-[hash].css'),
     //ProvidePlugins:
     new webpack.ProvidePlugin({
       React: 'react',
@@ -116,16 +130,15 @@ module.exports = {
       mixin: 'mixin-decorator'
     }),
     new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: resolve(__dirname, 'dist/assets/vendors/manifest.json')
+      manifest: resolve(__dirname, 'dist/vendors/manifest.json')
     }),
-    ...htmlPlugins,
     new AddAssetHtmlPlugin([
       {
         includeSourcemap: false,
-        filepath: resolve(__dirname, 'dist/assets/vendors/vendors.*.js'),
-        outputPath: "assets/vendors",
-        publicPath: `${publicPath}assets/vendors`
+        hash: true,
+        filepath: resolve(__dirname, 'dist/vendors/vendors.*.js'),
+        outputPath: "vendors",
+        publicPath: `../vendors`
       }
     ]),
   ]

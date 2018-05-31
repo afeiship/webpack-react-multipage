@@ -9,7 +9,9 @@
     "classnames"
   ],
   "development": {
-    "entries":"src/modules/**/index.js",
+    "entries":[
+      "src/modules/blank-module/index.js"
+    ],
     "publicPath": "./",
     "libs": {
       "react": "/node_modules/react/umd/react.development.js",

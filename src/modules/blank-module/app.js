@@ -38,7 +38,7 @@ export default class extends AppBase {
         {test}
         <header>
           <h1 className="lc-1 ">我是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题</h1>
-          <h2>short!</h2>
+          <h2>short!!</h2>
         </header>
         <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>

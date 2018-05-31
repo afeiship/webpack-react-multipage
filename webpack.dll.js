@@ -8,7 +8,7 @@ module.exports = {
   mode: argv.env,
   output: {
     path: resolve(__dirname, 'dist/'),
-    filename: 'assets/vendors/[name].[chunkhash].js',
+    filename: 'vendors/[name].[chunkhash].js',
     library: '[name]_library'
   },
   resolve: {
@@ -33,15 +33,15 @@ module.exports = {
         use: ['babel-loader'],
         include: [
           resolve(__dirname, "src"),
-          resolve(__dirname, "node_modules/mixin-decorator"),
-          resolve(__dirname, "node_modules/react-dynamic-router")
+          resolve(__dirname, "node_mixin-decorator"),
+          resolve(__dirname, "node_react-dynamic-router")
         ]
       }
     ],
   },
   plugins: [
     new webpack.DllPlugin({
-      path: resolve(__dirname, 'dist/assets/vendors/manifest.json'),
+      path: resolve(__dirname, 'dist/vendors/manifest.json'),
       name: '[name]_library'
     })
   ],
