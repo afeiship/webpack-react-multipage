@@ -24,10 +24,12 @@ const htmlPlugins = nx.map(webpackEntries(entries), (key, value) => {
 });
 
 
+
 module.exports = {
   mode: config[argv.env],
   entry,
   output: {
+    publicPath,
     filename: '[name]/[name]-[hash].js'
   },
   resolve: {
@@ -52,8 +54,8 @@ module.exports = {
         use: ['babel-loader'],
         include: [
           resolve(__dirname, "src"),
-          resolve(__dirname, "node_mixin-decorator"),
-          resolve(__dirname, "node_react-dynamic-router")
+          resolve(__dirname, "node_modules/mixin-decorator"),
+          resolve(__dirname, "node_modules/react-dynamic-router")
         ]
       },
       {
@@ -104,21 +106,21 @@ module.exports = {
     'react': 'React',
     'react-dom': 'ReactDOM',
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          chunks: 'initial',
-          minChunks: 2,
-          name: 'commons',
-          enforce: true
-        }
-      }
-    }
-  },
-  performance: {
-    hints: false
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         chunks: 'initial',
+  //         minChunks: 2,
+  //         name: 'commons',
+  //         enforce: true
+  //       }
+  //     }
+  //   }
+  // },
+  // performance: {
+  //   hints: false
+  // },
   plugins: [
     ...htmlPlugins,
     new ExtractTextPlugin('[name]/[name]-[hash].css'),
@@ -138,7 +140,7 @@ module.exports = {
         hash: true,
         filepath: resolve(__dirname, 'dist/vendors/vendors.*.js'),
         outputPath: "vendors",
-        publicPath: `../vendors`
+        publicPath: `${publicPath}vendors`
       }
     ]),
   ]

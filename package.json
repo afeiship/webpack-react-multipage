@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "dll": "webpack --config webpack.dll.js",
-    "dev": "npm run clean && npm run dll && webpack-serve --config webpack.dev.js  --env=development",
+    "dev": "npm run clean && npm run dll && webpack-serve --config webpack.dev.js --env=development",
     "build": "npm run clean && npm run dll && webpack --config webpack.prod.js --env=production",
     "start": "node express.js"
   },
