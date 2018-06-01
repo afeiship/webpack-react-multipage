@@ -106,21 +106,21 @@ module.exports = {
     'react': 'React',
     'react-dom': 'ReactDOM',
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       commons: {
-  //         chunks: 'initial',
-  //         minChunks: 2,
-  //         name: 'commons',
-  //         enforce: true
-  //       }
-  //     }
-  //   }
-  // },
-  // performance: {
-  //   hints: false
-  // },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2,
+          name: 'commons',
+          enforce: true
+        }
+      }
+    }
+  },
+  performance: {
+    hints: false
+  },
   plugins: [
     ...htmlPlugins,
     new ExtractTextPlugin('[name]/[name]-[hash].css'),
