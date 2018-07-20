@@ -12,27 +12,27 @@ export default class extends AppBase {
         myInitial: 0,
         sum: 0
       },
-      local:{
-        test:200,
-        store:0,
-        items:[
-          {key:1}
+      local: {
+        test: 200,
+        store: 0,
+        items: [
+          { key: 1 }
         ]
       },
-      session:{
-        afei:'session test..'
+      session: {
+        afei: 'session test..'
       }
     }
   }
 
   _onClick() {
-    let {test} = AppBase.$.local;
+    let { test } = AppBase.$.local;
     test++;
-    AppBase.$.local={test:test};
+    AppBase.$.local = { test: test };
   }
 
   render() {
-    const {test} = AppBase.$.local;
+    const { test } = AppBase.$.local;
     return (
       <div className="test-module">
         {test}

@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const {resolve} = require('path');
 const {vendors} = require('./config');
-const {argv} = require('yargs');
 
 module.exports = {
   mode: 'production',

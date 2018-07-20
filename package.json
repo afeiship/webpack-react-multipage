@@ -2,16 +2,19 @@
   "name": "webpack-react-multipage",
   "version": "0.0.1",
   "description": "React multipage app based on webpack.",
-  "homepage": "git@github.com:afeiship/webpack-react-multipage.git",
+  "homepage": "https://github.com/afeiship/webpack-react-multipage",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
   "scripts": {
+    "test1": "webpack -p --env.mode=production",
+    "test2": "webpack --env.mode=development",
+    "test3": "webpack-dev-server --env.mode=local",
     "clean": "rimraf dist",
     "dll": "webpack --config webpack.dll.js",
     "dev": "npm run clean && npm run dll && webpack-serve --config webpack.dev.js --env=development",
-    "build": "npm run clean && npm run dll && webpack --config webpack.prod.js --env=production",
+    "build": "npm run clean && npm run dll && webpack --config webpack.prod.js --env=production --display-error-details",
     "start": "node express.js"
   },
   "license": "MIT",
@@ -20,13 +23,14 @@
     "fastclick": "^1.0.6",
     "mixin-decorator": "github:afeiship/mixin-decorator",
     "next-axios": "github:afeiship/next-axios",
+    "next-delete": "github:afeiship/next-delete",
     "next-hashlize": "github:afeiship/next-hashlize",
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-react-redux": "github:afeiship/next-react-redux",
     "next-scroll-minder": "github:afeiship/next-scroll-minder",
     "next-store": "github:afeiship/next-store",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "resolution": "github:afeiship/resolution",
@@ -38,6 +42,7 @@
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^3.0.0-0",
+    "app-root-path": "^2.1.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-dynamic-import-node": "^1.2.0",
@@ -67,6 +72,7 @@
     "import-glob-loader": "^1.1.0",
     "install": "^0.11.0",
     "mini-css-extract-plugin": "^0.4.0",
+    "next-flatten": "github:afeiship/next-flatten",
     "node-sass": "^4.8.3",
     "npm": "^6.1.0",
     "postcss-loader": "^2.1.5",
@@ -75,9 +81,12 @@
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
     "webpack": "^4.6.0",
+    "webpack-app-kits": "github:afeiship/webpack-app-kits",
     "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.4",
     "webpack-entries": "github:afeiship/webpack-entries",
     "webpack-merge": "^4.1.2",
+    "webpack-mpa-entries": "github:afeiship/webpack-mpa-entries",
     "webpack-serve": "^0.2.0"
   }
 }
