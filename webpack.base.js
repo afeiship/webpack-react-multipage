@@ -35,7 +35,6 @@ module.exports = {
   performance: configs.performance(),
   plugins: nx.flatten(
     [
-
       plugins.multipleHtml({entries, libs}),
       plugins.extractText(),
       plugins.dllRefrence({publicPath}),
