@@ -8,7 +8,7 @@ export const TestComp = require('views/test-comp').default;
 
 
 /*===services start===*/
-export const $api = require('services/api').default;
+// export const $api = require('services/api').default;
 export const $config = require('services/config').default;
 export const $app = require('services/app').default;
 export const $http = require('services/http').default;

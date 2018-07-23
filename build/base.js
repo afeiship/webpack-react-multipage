@@ -4,8 +4,8 @@ import 'next-flatten';
 
 
 export default (inEnv) => {
-  const {mode, local} = inEnv;
-  const {libs, publicPath, entries} = config[local ? 'local' : mode];
+  const {mode, type} = inEnv;
+  const {libs, publicPath, entries} = config[type || mode];
 
   return {
     mode,
@@ -19,7 +19,7 @@ export default (inEnv) => {
       rules: nx.flatten(
         [
           loaders.babel(),
-          loaders.environment({ mode }),
+          loaders.environment({mode}),
           loaders.css(),
           loaders.sass(),
           loaders.mp34(),

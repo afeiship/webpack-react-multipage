@@ -1,6 +1,5 @@
-const {vendors} = require('./config');
+import {vendors} from './config';
 import {loaders, plugins, configs, inputs, outputs} from 'webpack-app-kits';
-
 
 export default (inEnv) => {
   const {mode} = inEnv;

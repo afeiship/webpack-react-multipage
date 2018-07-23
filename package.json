@@ -10,10 +10,10 @@
   "scripts": {
     "clean": "rimraf dist",
     "dll": "webpack -p --env.type=dll --env.mode=production",
-    "prepare": "npm run clean && npm run dll",
-    "dev": "npm run prepare && webpack-dev-server --env.type=local --env.mode=development",
-    "build-development": "npm run prepare && webpack -p --env.mode=development",
-    "build-production": "npm run prepare && webpack -p --env.mode=production",
+    "predev": "npm run clean && npm run dll",
+    "dev": "webpack-dev-server --env.type=local --env.mode=development",
+    "build-development": "npm run predev && webpack -p --env.mode=development",
+    "build-production": "npm run predev && webpack -p --env.mode=production",
     "start": "node express.js"
   },
   "license": "MIT",
@@ -40,9 +40,9 @@
     "webkit-sassui-short-name": "afeiship/webkit-sassui-short-name"
   },
   "devDependencies": {
-    "react-hmr-decorator": "github:afeiship/react-hmr-decorator",
+    "react-hmr-decorator": "afeiship/react-hmr-decorator",
     "webpack": "^4.6.0",
-    "webpack-app-kits": "github:afeiship/webpack-app-kits",
+    "webpack-app-kits": "afeiship/webpack-app-kits",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.2"
