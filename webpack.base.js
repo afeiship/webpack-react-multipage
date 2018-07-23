@@ -1,19 +1,15 @@
 const config = require('./config');
 const {argv} = require('yargs');
 const {libs, publicPath, entries} = config[argv.env];
-const {loaders, plugins, configs} = require('webpack-app-kits');
-const mpaEntries = require('webpack-mpa-entries');
+const {loaders, plugins, configs, inputs, outputs} = require('webpack-app-kits');
 const mode = config[argv.env];
 require('next-flatten');
 
 
 module.exports = {
   mode,
-  entry: mpaEntries(entries, null, {absolute: true}),
-  output: {
-    publicPath,
-    filename: '[name]/[name]-[hash].js'
-  },
+  entry: inputs.mpa({entries}),
+  output: outputs.mpa({publicPath}),
   resolve: {
     alias: configs.alias(),
     extensions: configs.extensions()
@@ -35,10 +31,11 @@ module.exports = {
   performance: configs.performance(),
   plugins: nx.flatten(
     [
+      plugins.moduleConcatenation(),
       plugins.multipleHtml({entries, libs}),
       plugins.extractText(),
       plugins.dllRefrence({publicPath}),
-      plugins.loadersOptions({mode}),
+      plugins.loaderOptions({mode}),
       plugins.provide(),
     ]
   )

@@ -28,7 +28,7 @@ export default class extends AppBase {
   _onClick() {
     let {test} = AppBase.$.local;
     test++;
-    AppBase.$.local = {test: test};
+    AppBase.$.local = {test};
   }
 
   render() {

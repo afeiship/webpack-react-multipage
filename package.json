@@ -82,11 +82,11 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.6.0",
     "webpack-app-kits": "github:afeiship/webpack-app-kits",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.4",
     "webpack-entries": "github:afeiship/webpack-entries",
     "webpack-merge": "^4.1.2",
-    "webpack-mpa-entries": "github:afeiship/webpack-mpa-entries",
-    "webpack-serve": "^0.2.0"
+    "webpack-mpa-entries": "github:afeiship/webpack-mpa-entries"
   }
 }

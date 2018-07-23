@@ -1,25 +1,13 @@
-const webpack = require('webpack');
-const {resolve} = require('path');
 const {vendors} = require('./config');
+const {loaders, plugins, configs, inputs, outputs} = require('webpack-app-kits');
+
 
 module.exports = {
   mode: 'production',
-  output: {
-    path: resolve(__dirname, 'dist/'),
-    filename: 'vendors/[name].[chunkhash].js',
-    library: '[name]_library'
-  },
+  output: outputs.dll(),
   plugins: [
-    new webpack.DllPlugin({
-      path: resolve(__dirname, 'dist/vendors/manifest.json'),
-      name: '[name]_library'
-    })
+    plugins.dll()
   ],
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-  },
-  entry: {
-    vendors
-  },
+  externals: configs.externals.react(),
+  entry: inputs.dll({vendors})
 };
