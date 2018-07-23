@@ -1,42 +1,45 @@
-const config = require('./config');
-const {argv} = require('yargs');
-const {libs, publicPath, entries} = config[argv.env];
-const {loaders, plugins, configs, inputs, outputs} = require('webpack-app-kits');
-const mode = config[argv.env];
-require('next-flatten');
+import config from './config';
+import {loaders, plugins, configs, inputs, outputs, utils} from 'webpack-app-kits';
+import 'next-flatten';
 
 
-module.exports = {
-  mode,
-  entry: inputs.mpa({entries}),
-  output: outputs.mpa({publicPath}),
-  resolve: {
-    alias: configs.alias(),
-    extensions: configs.extensions()
-  },
-  module: {
-    rules: nx.flatten(
+export default (inEnv) => {
+  const {mode, local} = inEnv;
+  const {libs, publicPath, entries} = config[local ? 'local' : mode];
+
+  return {
+    mode,
+    entry: inputs.mpa({entries}),
+    output: outputs.mpa({publicPath}),
+    resolve: {
+      alias: configs.alias(),
+      extensions: configs.extensions()
+    },
+    module: {
+      rules: nx.flatten(
+        [
+          loaders.babel(),
+          loaders.environment({ mode }),
+          loaders.css(),
+          loaders.sass(),
+          loaders.mp34(),
+          loaders.image(),
+          loaders.font()
+        ]
+      ),
+    },
+    externals: configs.externals.react(),
+    optimization: configs.optimization(),
+    performance: configs.performance(),
+    plugins: nx.flatten(
       [
-        loaders.babel(),
-        loaders.css(),
-        loaders.sass(),
-        loaders.mp34(),
-        loaders.image(),
-        loaders.font(),
+        plugins.moduleConcatenation(),
+        plugins.multipleHtml({entries, libs}),
+        plugins.extractText(),
+        plugins.dllRefrence({publicPath}),
+        plugins.loaderOptions({mode}),
+        plugins.provide()
       ]
-    ),
-  },
-  externals: configs.externals.react(),
-  optimization: configs.optimization(),
-  performance: configs.performance(),
-  plugins: nx.flatten(
-    [
-      plugins.moduleConcatenation(),
-      plugins.multipleHtml({entries, libs}),
-      plugins.extractText(),
-      plugins.dllRefrence({publicPath}),
-      plugins.loaderOptions({mode}),
-      plugins.provide(),
-    ]
-  )
+    )
+  }
 };

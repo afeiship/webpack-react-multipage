@@ -1,33 +1,22 @@
-/**
- * Created by feizheng on 3/27/17.
- */
+export default class Config {
 
-// const env = '__BUILD_ENV__';
-const env = 'test';
-const CONFIG = require(`../configs/${env}`).default;
-
-// console.log(`load config env=${env}...`, CONFIG);
-
-export default class {
-  static VESION = '__BUILD_VERSION__';
-  static ENV = env;
-  static WX_DEBUG = CONFIG.WX_DEBUG;
-  static IMG_URL = CONFIG.IMG_URL;
-
-  static API_WITH_TOKEN = {
-    baseUrl: '/api/wp/pmall/',
-    items: [
-      'test1',
-      'loginByPublic_100'
-    ]
+  static HASH = '__BUILD_HASH__';
+  static STORE_PREFIX = 'mul-react';
+  static ENV = require('environments/__BUILD_ENV__').default;
+  static IMG_URL = Config.ENV.IMG_URL;
+  static TEL_400 = '400-613-6858';
+  static APIS = {
+    baseUrl: `//${location.host}`,
+    items: {
+      '/app': {
+        'demo_api': ['post', '/api/v1/demo'],
+      }
+    }
   };
-
-  static API_WITHOUT_TOKEN = {
-    baseUrl: '/api/wp/',
-    items: [
-      'setMyPhone_100'
-    ]
-  }
+  static DATE_FORMAT = {
+    datetime: 'YYYY-MM-DD HH:mm:ss',
+    date: 'YYYY-MM-DD'
+  };
 }
 
 
