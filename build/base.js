@@ -10,6 +10,7 @@ export default (inEnv) => {
   return {
     mode,
     entry: inputs.mpa({entries}),
+    context:__dirname,
     output: outputs.mpa({publicPath}),
     resolve: {
       alias: configs.alias(),
