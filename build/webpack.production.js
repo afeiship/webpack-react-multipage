@@ -1,6 +1,6 @@
-import merge from 'webpack-merge';
-import base from './base';
+const merge = require("webpack-merge");
+const baseConfig = require("./base");
 
-export default (inEnv) => {
-  return merge(base(inEnv));
+module.exports = inEnv => {
+  return merge(baseConfig(inEnv));
 };

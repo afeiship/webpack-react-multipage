@@ -1,15 +1,19 @@
-import {vendors} from './config';
-import {loaders, plugins, configs, inputs, outputs} from 'webpack-app-kits';
+const {
+  loaders,
+  plugins,
+  configs,
+  inputs,
+  outputs
+} = require("@feizheng/webpack-app-kits");
+const { vendors } = require("./config");
 
-export default (inEnv) => {
-  const {mode} = inEnv;
+module.exports = inEnv => {
+  const { mode } = inEnv;
   return {
     mode,
-    entry: inputs.dll({vendors}),
+    entry: inputs.dll({ vendors }),
     output: outputs.dll(),
-    plugins: [
-      plugins.dll()
-    ],
+    plugins: [plugins.dll()],
     externals: configs.externals.react()
-  }
+  };
 };

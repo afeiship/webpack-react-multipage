@@ -1,20 +1,17 @@
-import merge from 'webpack-merge';
-import config from './config';
-import {plugins, configs} from 'webpack-app-kits';
+const { plugins, configs } = require("@feizheng/webpack-app-kits");
+const merge = require("webpack-merge");
+const baseConfig = require("./base");
+const config = require("./config");
 
-import base from './base';
+module.exports = inEnv => {
+  const { port, proxy } = config;
 
-export default (inEnv) => {
-  const {port, proxy} = config;
-
-  return merge(base(inEnv), {
+  return merge(baseConfig(inEnv), {
     devtool: configs.devtool(),
-    plugins: [
-      plugins.hotModuleReplacement()
-    ],
+    plugins: [plugins.hotModuleReplacement()],
     devServer: configs.devServer({
       port,
-      proxy,
+      proxy
     })
   });
 };
