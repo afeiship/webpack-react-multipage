@@ -7,7 +7,6 @@ const {
   utils
 } = require("@feizheng/webpack-app-kits");
 const config = require("./config");
-require("@feizheng/next-flatten");
 
 module.exports = inEnv => {
   const { mode, type } = inEnv;

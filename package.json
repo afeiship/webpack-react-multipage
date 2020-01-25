@@ -25,6 +25,7 @@
     "@feizheng/next-js-core2": "^2.2.2",
     "@feizheng/next-react-redux": "^3.0.0",
     "@feizheng/next-store": "^1.0.0",
+    "@feizheng/next-values": "^1.0.1",
     "@feizheng/webkit-sass-functions": "^1.0.0",
     "@feizheng/webkit-sass-generators": "^1.0.0",
     "@feizheng/webkit-sass-mixins": "^1.0.0",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@feizheng/webpack-app-kits": "^3.1.11",
+    "prettier": "^1.19.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",

@@ -18,7 +18,7 @@ module.exports = {
     publicPath: "/",
     libs: {
       react: "/react/umd/react.development.js",
-      "react-dom": "/react-dom/umd/react-dom.development.js"
+      reactDom: "/react-dom/umd/react-dom.development.js"
     }
   },
   development: {
@@ -26,7 +26,7 @@ module.exports = {
     publicPath: "/app/",
     libs: {
       react: "//cdn.bootcss.com/react/16.4.0/umd/react.production.min.js",
-      "react-dom": "//cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"
+      reactDom: "//cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"
     }
   },
   production: {
@@ -34,7 +34,7 @@ module.exports = {
     publicPath: "/app/",
     libs: {
       react: "//cdn.bootcss.com/react/16.4.0/umd/react.production.min.js",
-      "react-dom": "//cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"
+      reactDom: "//cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"
     }
   }
 };
