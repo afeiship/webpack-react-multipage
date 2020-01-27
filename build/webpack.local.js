@@ -1,6 +1,6 @@
 const { plugins, configs } = require("@feizheng/webpack-app-kits");
 const merge = require("webpack-merge");
-const baseConfig = require("./base");
+const baseConfig = require("./webpack.base");
 const config = require("./config");
 
 module.exports = inEnv => {

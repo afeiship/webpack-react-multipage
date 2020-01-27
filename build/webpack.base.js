@@ -1,16 +1,9 @@
-const {
-  loaders,
-  plugins,
-  configs,
-  inputs,
-  outputs,
-  utils
-} = require("@feizheng/webpack-app-kits");
-const config = require("./config");
+const { loaders, plugins, configs, inputs, outputs, utils } = require('@feizheng/webpack-app-kits');
+const config = require('./config');
 
-module.exports = inEnv => {
-  const { mode, type } = inEnv;
-  const { libs, publicPath, entries } = config[type || mode];
+module.exports = (inEnv) => {
+  const mode = process.env.NODE_ENV;
+  const { libs, publicPath, entries } = config[mode || 'production'];
 
   return {
     mode,
@@ -36,6 +29,7 @@ module.exports = inEnv => {
     optimization: configs.optimization(),
     performance: configs.performance(),
     plugins: nx.flatten([
+      plugins.progressBar(),
       plugins.minCssExtract(),
       plugins.semver({ mode }),
       plugins.define({ mode }),

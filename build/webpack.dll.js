@@ -8,12 +8,15 @@ const {
 const { vendors } = require("./config");
 
 module.exports = inEnv => {
-  const { mode } = inEnv;
   return {
-    mode,
+    mode:'production',
     entry: inputs.dll({ vendors }),
     output: outputs.dll(),
-    plugins: [plugins.dll()],
+    plugins: [
+      plugins.progressBar(),
+      plugins.clean(),
+      plugins.dll(),
+    ],
     externals: configs.externals.react()
   };
 };

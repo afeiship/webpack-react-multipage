@@ -8,13 +8,11 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "dll": "webpack -p --env.type=dll --env.mode=production",
-    "predev": "npm run clean && npm run dll",
-    "dev": "webpack-dev-server --env.type=local --env.mode=development",
-    "build-development": "npm run predev && webpack -p --env.mode=development",
-    "build-production": "npm run predev && webpack -p --env.mode=production",
-    "start": "node express.js"
+    "dll": "cross-env NODE_ENV=dll webpack -p",
+    "dev": "npm run dll && cross-env NODE_ENV=local webpack-dev-server --watch-poll",
+    "build:test": "npm run dll && cross-env NODE_ENV=test NODE_OPTIONS=--max_old_space_size=4096 webpack -p",
+    "build:production": "npm run dll && cross-env NODE_ENV=production NODE_OPTIONS=--max_old_space_size=4096 webpack -p",
+    "start": "node ./build/server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -32,14 +30,13 @@
     "@feizheng/webkit-sass-reset": "^1.0.0",
     "@feizheng/webkit-sassui-short-name": "^1.1.0",
     "classnames": "^2.2.5",
-    "fastclick": "^1.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "@feizheng/webpack-app-kits": "^3.1.11",
+    "@feizheng/webpack-app-kits": "^3.2.1",
     "prettier": "^1.19.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
